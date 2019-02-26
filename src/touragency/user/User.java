@@ -9,6 +9,12 @@ public class User {
     private int passportNumber;
     private Order[] orders;
 
+    public User(String name, String lastName, int passportNumber) {
+        this.name = name;
+        this.lastName = lastName;
+        this.passportNumber = passportNumber;
+    }
+
     @Override
     public String toString() {
         return "User{" +

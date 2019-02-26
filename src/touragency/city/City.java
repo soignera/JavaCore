@@ -8,6 +8,13 @@ public class City {
         private int population;
         private boolean capital;
 
+    public City(String name, Climate climate, int population, boolean capital) {
+        this.name = name;
+        this.climate = climate;
+        this.population = population;
+        this.capital = capital;
+    }
+
     public Long getId() {
         return id;
     }

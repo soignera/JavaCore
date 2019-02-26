@@ -10,14 +10,7 @@ public class Country {
     private City[] cities;
     private Long id;
 
-    @Override
-    public String toString() {
-        return "Country{" +
-                "name='" + name + '\'' +
-                ", languag='" + languag + '\'' +
-                ", cities=" + Arrays.toString(cities) +
-                '}';
-    }
+
 
     public String getName() {
         return name;
@@ -42,4 +35,22 @@ public class Country {
     public void setCities(City[] cities) {
         this.cities = cities;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Country{" +
+                "name='" + name + '\'' +
+                ", languag='" + languag + '\'' +
+                ", cities=" + Arrays.toString(cities) +
+                '}';
+    }
+
 }

@@ -1,10 +1,13 @@
 package touragency.user;
 
+import touragency.order.Order;
+
 public class User {
     private Long id;
     private String name;
     private String lastName;
     private int passportNumber;
+    private Order[] orders;
 
     @Override
     public String toString() {
@@ -13,6 +16,14 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", passportNumber=" + passportNumber +
                 '}';
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -37,5 +48,13 @@ public class User {
 
     public void setPassportNumber(int passportNumber) {
         this.passportNumber = passportNumber;
+    }
+
+    public Order[] getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Order[] orders) {
+        this.orders = orders;
     }
 }

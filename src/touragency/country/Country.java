@@ -8,6 +8,7 @@ public class Country {
     private String name;
     private String languag;
     private City[] cities;
+    private Long id;
 
     @Override
     public String toString() {

@@ -4,4 +4,5 @@ public interface BaseRepo {
     void deleteById(long id);
 
     void printAll();
+
 }

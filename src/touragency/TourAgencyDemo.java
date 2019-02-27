@@ -16,10 +16,10 @@ import java.util.List;
 public class TourAgencyDemo {
     private static class Application {
         private Storage storage = new Storage();
-        private CityService cityService= new CityDefaultService();
+        private CityService cityService = CityDefaultService.getServiceInstance();
 
 
-        }
+
 
         private void addCities() {
             List<City> listCitites= new ArrayList<>();
@@ -32,15 +32,15 @@ public class TourAgencyDemo {
 
         }
         public void printCities() {
-            cityService.printAll();
+           new Application().cityService.printAll();
         }
 
-        public static void main(String[] args) {
-            Application application = new Application();
-            application.fillStorage();
-            System.out.println("--------Cities------------");
-            application.printCities();
-        }
+    public static void main(String[] args) {
+        Application application = new Application();
+        application.fillStorage();
+        System.out.println("--------Cities------------");
+        application.printCities();
+    }}
 
-    }
+
 }

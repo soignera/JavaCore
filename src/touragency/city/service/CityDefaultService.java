@@ -8,10 +8,19 @@ import touragency.city.search.CitySearchCondition;
 
 
 public class CityDefaultService implements CityService{
-    private final CityRepo cityRepo;
+    private CityRepo cityRepo;
+    private static  CityService cityServiceInstance;
+
 
     public CityDefaultService(CityRepo cityRepo) {
         this.cityRepo = cityRepo;
+    }
+    public CityDefaultService(){};
+    public static CityService getServiceInstance() {
+        if (cityServiceInstance == null) {
+            cityServiceInstance = new CityDefaultService();
+        }
+        return cityServiceInstance;
     }
 
 
@@ -53,4 +62,5 @@ public class CityDefaultService implements CityService{
     public City[] search(CitySearchCondition searchCondition) {
         return cityRepo.search(searchCondition);
     }
+
 }

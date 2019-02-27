@@ -1,12 +1,12 @@
-package touragency.order;
+package touragency.order.domain;
 
-import touragency.city.City;
-import touragency.country.Country;
-import touragency.user.User;
+import touragency.city.domain.City;
+import touragency.country.domain.Country;
+import touragency.user.domain.User;
 
 public class Order {
     private Long id;
-    private String price;
+    private int price;
     private City city;
     private Country country;
     private User user;
@@ -19,11 +19,11 @@ public class Order {
         this.id = id;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

@@ -2,7 +2,7 @@ package touragency.country.repo;
 
 
 import touragency.common.solution.ArrayUtils;
-import touragency.country.Country;
+import touragency.country.domain.Country;
 import touragency.country.search.CountrySearchCondition;
 
 import static touragency.common.solution.StringUtils.isNotBlank;

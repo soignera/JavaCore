@@ -1,6 +1,6 @@
-package touragency.user;
+package touragency.user.domain;
 
-import touragency.order.Order;
+import touragency.order.domain.Order;
 
 public class User {
     private Long id;
@@ -13,6 +13,9 @@ public class User {
         this.name = name;
         this.lastName = lastName;
         this.passportNumber = passportNumber;
+    }
+
+    public User() {
     }
 
     @Override

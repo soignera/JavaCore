@@ -1,16 +1,12 @@
 package touragency;
 
-import touragency.city.City;
-import touragency.city.Climate;
-import touragency.city.repo.CityRepo;
-import touragency.city.search.CitySearchCondition;
+import touragency.city.domain.City;
+import touragency.city.domain.Climate;
 import touragency.city.service.CityDefaultService;
 import touragency.city.service.CityService;
 import touragency.storage.Storage;
-import touragency.user.User;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class TourAgencyDemo {

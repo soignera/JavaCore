@@ -1,8 +1,8 @@
 package touragency.country.service;
 
-import touragency.city.City;
+import touragency.city.domain.City;
 import touragency.city.repo.CityRepo;
-import touragency.country.Country;
+import touragency.country.domain.Country;
 import touragency.country.repo.CountryRepo;
 import touragency.country.search.CountrySearchCondition;
 

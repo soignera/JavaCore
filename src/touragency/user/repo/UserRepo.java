@@ -1,7 +1,7 @@
 package touragency.user.repo;
 
 import touragency.common.business.repo.BaseRepo;
-import touragency.user.User;
+import touragency.user.domain.User;
 import touragency.user.search.UserSearchCondition;
 
 public interface UserRepo extends BaseRepo {

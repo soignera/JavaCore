@@ -1,7 +1,7 @@
 package touragency.user.repo;
 
 import touragency.common.solution.ArrayUtils;
-import touragency.user.User;
+import touragency.user.domain.User;
 import touragency.user.search.UserSearchCondition;
 
 import static touragency.common.solution.StringUtils.isNotBlank;

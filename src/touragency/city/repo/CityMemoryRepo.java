@@ -1,6 +1,6 @@
 package touragency.city.repo;
 
-import touragency.city.City;
+import touragency.city.domain.City;
 import touragency.city.search.CitySearchCondition;
 import touragency.common.solution.ArrayUtils;
 

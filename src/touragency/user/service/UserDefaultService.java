@@ -1,6 +1,6 @@
 package touragency.user.service;
 
-import touragency.user.User;
+import touragency.user.domain.User;
 import touragency.user.repo.UserRepo;
 import touragency.user.search.UserSearchCondition;
 

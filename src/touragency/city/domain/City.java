@@ -1,4 +1,4 @@
-package touragency.city;
+package touragency.city.domain;
 
 public class City {
 

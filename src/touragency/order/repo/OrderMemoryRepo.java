@@ -2,7 +2,7 @@ package touragency.order.repo;
 
 
 import touragency.common.solution.ArrayUtils;
-import touragency.order.Order;
+import touragency.order.domain.Order;
 import touragency.order.search.OrderSearchCondition;
 
 import static touragency.common.solution.StringUtils.isNotBlank;
@@ -39,8 +39,7 @@ public class OrderMemoryRepo implements OrderRepo {
 
         if (searchCondition.getId() != null) {
             return new Order[]{findById(searchCondition.getId())};
-        } else {
-            boolean searchByPrice = isNotBlank(searchCondition.getPrice());
+        }
 
 
             Order[] result = new Order[orders.length];
@@ -50,9 +49,6 @@ public class OrderMemoryRepo implements OrderRepo {
                 if (order != null) {
                     boolean found = true;
 
-                    if (searchByPrice) {
-                        found = searchCondition.getPrice().equals(order.getPrice());
-                    }
 
 
                     if (found) {
@@ -67,7 +63,7 @@ public class OrderMemoryRepo implements OrderRepo {
                 System.arraycopy(result, 0, toReturn, 0, resultIndex);
                 return toReturn;
             }
-        }
+
         return EMPTY_ORDERS_ARR;
     }
 

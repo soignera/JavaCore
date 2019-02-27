@@ -1,9 +1,7 @@
 package touragency.user.service;
 
-import touragency.city.City;
-import touragency.city.search.CitySearchCondition;
 import touragency.common.business.service.BaseService;
-import touragency.user.User;
+import touragency.user.domain.User;
 import touragency.user.search.UserSearchCondition;
 
 public interface UserService extends BaseService {

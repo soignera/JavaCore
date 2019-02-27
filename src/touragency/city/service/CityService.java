@@ -1,9 +1,11 @@
 package touragency.city.service;
 
-import touragency.city.City;
+import touragency.city.domain.City;
 
 import touragency.city.search.CitySearchCondition;
 import touragency.common.business.service.BaseService;
+
+import java.util.List;
 
 public interface CityService extends BaseService {
     void add(City city);
@@ -11,5 +13,5 @@ public interface CityService extends BaseService {
     City findById(Long id);
     void delete(City city);
 
-    City[] search(CitySearchCondition searchCondition);
+    List[City] search(CitySearchCondition searchCondition);
 }

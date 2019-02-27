@@ -1,10 +1,12 @@
 package touragency.city.service;
 
 
-import touragency.city.City;
+
+import touragency.city.domain.City;
 import touragency.city.repo.CityRepo;
 import touragency.city.search.CitySearchCondition;
 
+import java.util.List;
 
 
 public class CityDefaultService implements CityService{
@@ -53,14 +55,15 @@ public class CityDefaultService implements CityService{
             cityRepo.deleteById(id);
         }
     }
+    @Override
+    public List[City] search(CitySearchCondition searchCondition) {
+        return cityRepo.search(searchCondition);
+    }
 
     @Override
     public void printAll() {
         cityRepo.printAll();
     }
-    @Override
-    public City[] search(CitySearchCondition searchCondition) {
-        return cityRepo.search(searchCondition);
-    }
+
 
 }

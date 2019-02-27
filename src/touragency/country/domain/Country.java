@@ -1,6 +1,6 @@
-package touragency.country;
+package touragency.country.domain;
 
-import touragency.city.City;
+import touragency.city.domain.City;
 
 import java.util.Arrays;
 

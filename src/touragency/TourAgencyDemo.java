@@ -35,12 +35,13 @@ public class TourAgencyDemo {
            new Application().cityService.printAll();
         }
 
+    }
     public static void main(String[] args) {
         Application application = new Application();
         application.fillStorage();
         System.out.println("--------Cities------------");
         application.printCities();
-    }}
+    }
 
 
 }

@@ -1,4 +1,4 @@
-package touragency.city.service;
+package lesson7.touragency.city.service;
 
 import touragency.city.domain.City;
 
@@ -13,5 +13,5 @@ public interface CityService extends BaseService {
     City findById(Long id);
     void delete(City city);
 
-    City[] search(CitySearchCondition searchCondition);
+    //List[City] search(CitySearchCondition searchCondition);
 }

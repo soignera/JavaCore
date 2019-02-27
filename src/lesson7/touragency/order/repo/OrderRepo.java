@@ -1,4 +1,4 @@
-package touragency.order.repo;
+package lesson7.touragency.order.repo;
 
 import touragency.common.business.repo.BaseRepo;
 import touragency.order.domain.Order;

@@ -1,8 +1,9 @@
-package touragency.order.service;
+package lesson7.touragency.order.service;
 
 import touragency.order.domain.Order;
 import touragency.order.repo.OrderRepo;
 import touragency.order.search.OrderSearchCondition;
+import touragency.order.service.OrderService;
 
 import java.util.List;
 

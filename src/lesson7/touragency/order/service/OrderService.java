@@ -1,4 +1,4 @@
-package touragency.order.service;
+package lesson7.touragency.order.service;
 
 import touragency.common.business.service.BaseService;
 import touragency.order.domain.Order;
@@ -13,5 +13,5 @@ public interface OrderService extends BaseService {
 
     void delete(Order order);
 
-    Order[] search(OrderSearchCondition searchCondition);
+    List<Order> search(OrderSearchCondition searchCondition);
 }

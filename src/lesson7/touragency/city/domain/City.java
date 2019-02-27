@@ -1,4 +1,6 @@
-package touragency.city.domain;
+package lesson7.touragency.city.domain;
+
+import touragency.city.domain.Climate;
 
 public class City {
 
@@ -7,11 +9,6 @@ public class City {
         private Climate climate;
         private int population;
         private boolean capital;
-
-    public City(String name, int population) {
-        this.name = name;
-        this.population = population;
-    }
 
     public City(String name, Climate climate, int population, boolean capital) {
         this.name = name;

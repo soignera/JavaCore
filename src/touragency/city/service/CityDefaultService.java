@@ -56,7 +56,7 @@ public class CityDefaultService implements CityService{
         }
     }
     @Override
-    public List[City] search(CitySearchCondition searchCondition) {
+    public City[] search(CitySearchCondition searchCondition) {
         return cityRepo.search(searchCondition);
     }
 

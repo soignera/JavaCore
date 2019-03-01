@@ -8,4 +8,5 @@ public interface CityRepo extends BaseRepo {
     void add(City city);
     City findById(long id);
     City[] search(CitySearchCondition searchCondition);
+    void update(City city);
 }

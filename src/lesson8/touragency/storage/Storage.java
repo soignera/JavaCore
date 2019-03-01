@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Storage {
+
     private static final int CAPACITY = 3;
     public static Country[] countries = new Country[CAPACITY];
     public static City[] cities = new City[CAPACITY];
@@ -18,4 +19,5 @@ public class Storage {
     public static List<Country> countriesList = new ArrayList<>();
     public static List<Order> ordersList = new ArrayList<>();
     public static List<User> usersList = new ArrayList<>();
+
 }

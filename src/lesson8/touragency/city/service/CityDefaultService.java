@@ -62,6 +62,12 @@ public class CityDefaultService implements CityService {
     public void printAll() {
         cityRepo.printAll();
     }
+    @Override
+    public void update(City city) {
+        if (city.getId() != null) {
+            cityRepo.update(city);
+        }
+    }
 
 
 }

@@ -96,6 +96,10 @@ public class CityMemoryRepo implements CityRepo {
             }
         }
     }
+    @Override
+    public void update(City city) {
+
+    }
 
     private Integer findCityIndexById(long cityId) {
         for (int i = 0; i < cities.length; i++) {
@@ -105,4 +109,5 @@ public class CityMemoryRepo implements CityRepo {
         }
         return null;
     }
+
 }

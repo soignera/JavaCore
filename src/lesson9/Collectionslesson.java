@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Collectionslesson {
 
-    public static void demoAddToInlineList() {
+    public static void demoAddToInlineAndCompareList() {
         List<String> namesInLine = new ArrayList<>(Arrays.asList("Ivan", "petr"));
         namesInLine.add("Dmitry");
         System.out.println(namesInLine);
@@ -30,6 +30,6 @@ public class Collectionslesson {
 
 
     public static void main(String[] args) {
-        demoAddToInlineList();
+        demoAddToInlineAndCompareList();
     }
 }

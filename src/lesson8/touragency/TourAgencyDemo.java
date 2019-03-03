@@ -7,7 +7,6 @@ import lesson8.touragency.storage.Storage;
 
 public class TourAgencyDemo {
     private static class Application {
-        private Storage storage = new Storage();
         private CityService cityService = CityDefaultService.getServiceInstance();
 
 

@@ -10,10 +10,9 @@ import lesson8.touragency.storage.Storage;
 public class TourAgencyDemo2 {
     private static class Application {
         static {
-            ServiceSupplier.newInstance(StorageType.MEMORY_ARRAY);
+            ServiceSupplier.newInstance(StorageType.MEMORY_COLLECTION);
         }
         private CityService cityService = ServiceSupplier.getInstance().getCityService();
-        private Storage storage = new Storage();
        //private CityService cityService = CityDefaultService.getServiceInstance();
 
 

@@ -28,8 +28,11 @@ public class ServiceSupplier {
 
     private void initServiceFactory(StorageType storageType) {
         switch (storageType) {
-            case MEMORY_ARRAY: {
-                serviceFactory = new MemoryArrayServiceFactory();
+//            case MEMORY_ARRAY: {
+//                serviceFactory = new MemoryArrayServiceFactory();
+//            }
+            default: {
+                serviceFactory = new MemoryCollectionServiceFactory();
             }
 
         }

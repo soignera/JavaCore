@@ -6,6 +6,8 @@ import lesson8.touragency.city.domain.City;
 import lesson8.touragency.city.repo.CityRepo;
 import lesson8.touragency.city.search.CitySearchCondition;
 
+import java.util.List;
+
 
 public class CityDefaultService implements CityService {
     private CityRepo cityRepo;
@@ -54,7 +56,7 @@ public class CityDefaultService implements CityService {
         }
     }
     @Override
-    public City[] search(CitySearchCondition searchCondition) {
+    public List<City> search(CitySearchCondition searchCondition) {
         return cityRepo.search(searchCondition);
     }
 

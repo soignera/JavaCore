@@ -1,8 +1,10 @@
 package lesson8.touragency.city.domain;
 
-public class City {
+import lesson8.touragency.common.business.domain.BaseDomain;
 
-        private Long id;
+public class City extends BaseDomain {
+
+        //private Long id;
         private String name;
         private Climate climate;
         private int population;
@@ -20,13 +22,13 @@ public class City {
         this.capital = capital;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     public String getName() {
         return name;
@@ -63,7 +65,7 @@ public class City {
     @Override
     public String toString() {
         return "City{" +
-                "id=" + id +
+               "id=" + id +
                 ", name='" + name + '\'' +
                 ", climate=" + climate +
                 ", population=" + population +

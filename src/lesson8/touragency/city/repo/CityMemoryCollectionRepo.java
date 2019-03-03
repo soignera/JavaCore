@@ -1,7 +1,7 @@
 package lesson8.touragency.city.repo;
 
 import lesson8.touragency.city.domain.City;
-import lesson8.touragency.storage.SequenceGenerator;
+import lesson8.touragency.storage.AtomicSequenceGenerator;
 import lesson8.touragency.city.search.CitySearchCondition;
 
 
@@ -13,7 +13,7 @@ import static lesson8.touragency.storage.Storage.citiesList;
 public class CityMemoryCollectionRepo implements CityRepo {
     @Override
     public void add(City city) {
-        city.setId(SequenceGenerator.getNextValue());
+        city.setId(AtomicSequenceGenerator.getNextValue());
         citiesList.add(city);
     }
 

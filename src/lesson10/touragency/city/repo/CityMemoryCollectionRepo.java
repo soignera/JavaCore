@@ -2,14 +2,18 @@ package lesson10.touragency.city.repo;
 
 import lesson10.touragency.city.domain.City;
 import lesson10.touragency.city.search.CitySearchCondition;
+import lesson10.touragency.common.business.search.SortType;
 import lesson10.touragency.storage.AtomicSequenceGenerator;
 
-import java.util.Collections;
-import java.util.List;
 
+import java.util.*;
+
+import static lesson10.touragency.storage.Storage.cities;
 import static lesson10.touragency.storage.Storage.citiesList;
 
 public class CityMemoryCollectionRepo implements CityRepo {
+    private Set<City> cities;
+
     @Override
     public void add(City city) {
         city.setId(AtomicSequenceGenerator.getNextValue());
@@ -29,7 +33,24 @@ public class CityMemoryCollectionRepo implements CityRepo {
 
     @Override
     public List<City> search(CitySearchCondition searchCondition) {
+
+                if (searchCondition.getSortType().equals(SortType.ASC)) {
+                    Collections.sort(citiesList);
+                    return citiesList;
+                }
+                else  if (searchCondition.getSortType().equals(SortType.DESC)) {
+                    //Comparator<City> comparator = Collections.reverseOrder();
+                    Comparator<City> comparator = new Comparator<City>() {
+                        @Override
+                        public int compare(City o1, City o2) {
+                            return o2.compareTo(o1);
+                        }
+                    };
+                    Collections.sort(citiesList,comparator);
+                    return citiesList;
+                }
         return Collections.emptyList();
+
     }
 
     @Override

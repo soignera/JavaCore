@@ -2,7 +2,8 @@ package lesson10.touragency.city.domain;
 
 import lesson10.touragency.common.business.domain.BaseDomain;
 
-public class City extends BaseDomain {
+public class City extends BaseDomain implements Comparable<City>
+{
 
         //private Long id;
         private String name;
@@ -71,5 +72,10 @@ public class City extends BaseDomain {
                 ", population=" + population +
                 ", capital=" + capital +
                 '}';
+    }
+
+    @Override
+    public int compareTo(City o) {
+        return Integer.compare(this.id.intValue(),o.id.intValue());
     }
 }

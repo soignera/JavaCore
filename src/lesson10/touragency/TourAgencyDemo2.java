@@ -2,9 +2,13 @@ package lesson10.touragency;
 
 import lesson10.touragency.city.domain.City;
 import lesson10.touragency.city.domain.Climate;
+import lesson10.touragency.city.search.CitySearchCondition;
 import lesson10.touragency.city.service.CityService;
 import lesson10.touragency.common.business.application.ServiceSupplier;
 import lesson10.touragency.common.business.application.StorageType;
+import lesson10.touragency.common.business.search.SortType;
+
+import java.util.List;
 
 public class TourAgencyDemo2 {
     private static class Application {
@@ -22,6 +26,15 @@ public class TourAgencyDemo2 {
             cityService.add(new City("123", Climate.HUMID_CONTINENTAL,1,true));
             cityService.add(new City("123", Climate.HUMID_CONTINENTAL,1,true));
             cityService.add(new City("123", Climate.HUMID_CONTINENTAL,1,true));
+
+        }
+        private void searchCities() {
+            CitySearchCondition citySearchCondition = new CitySearchCondition();
+            citySearchCondition.setSortType(SortType.DESC);
+            List<City> searchResult = cityService.search(citySearchCondition);
+            for (City city : searchResult) {
+                System.out.println(city);
+            }
 
         }
 //private void addCities() {
@@ -60,6 +73,8 @@ public class TourAgencyDemo2 {
         application.fillStorage();
         System.out.println("--------Cities------------");
         application.printCities();
+        application.searchCities();
+
     }
 
 

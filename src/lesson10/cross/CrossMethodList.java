@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class CrossMethodList {
     public static void main(String[] args) {
-makeItUniqueDemo();
+    makeItUniqueDemo();
     }
     private static void makeItUniqueDemo() {
         List<String> list = new ArrayList<>();
@@ -22,15 +22,16 @@ makeItUniqueDemo();
         list2.add("e");
         list2.add("f");
         System.out.println(list2);
+        Set<String> setStrList1 = new HashSet<>(list);
+        Set<String> setStrList2 = new HashSet<>(list2);
         Set<String> setStr = new HashSet<>();
-        for (String s1 : list) {
-            for (String s2 : list2) {
-                if (s1 == s2) {
-                    setStr.add(s1);
-
+        //for (String s1 : setStrList1) {
+            for (String s2 : setStrList2) {
+                if (setStrList1.add(s2)==false) {
+                    setStr.add(s2);
                 }
             }
-        }
+        //}
         System.out.println(setStr);
     }
 }

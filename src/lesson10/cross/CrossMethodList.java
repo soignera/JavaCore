@@ -25,15 +25,12 @@ makeItUniqueDemo();
         Set<String> setStr = new HashSet<>();
         for (String s1 : list) {
             for (String s2 : list2) {
-                if (s1==s2){
+                if (s1 == s2) {
                     setStr.add(s1);
 
                 }
             }
         }
         System.out.println(setStr);
-//        for (String s : setStr) {
-//            System.out.println(s);
-//        }
     }
 }

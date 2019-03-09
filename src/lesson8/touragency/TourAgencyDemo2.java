@@ -55,6 +55,7 @@ public class TourAgencyDemo2 {
         public void printCities(){cityService.printAll();
         }
 
+
     }
     public static void main(String[] args) {
         Application application = new Application();

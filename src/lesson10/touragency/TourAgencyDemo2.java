@@ -26,11 +26,22 @@ public class TourAgencyDemo2 {
             cityService.add(new City("123", Climate.HUMID_CONTINENTAL,1,true));
             cityService.add(new City("123", Climate.HUMID_CONTINENTAL,1,true));
             cityService.add(new City("123", Climate.HUMID_CONTINENTAL,1,true));
+            cityService.add(new City("1234", Climate.HUMID_CONTINENTAL,1,true));
 
         }
         private void searchCities() {
             CitySearchCondition citySearchCondition = new CitySearchCondition();
             citySearchCondition.setSortType(SortType.DESC);
+            List<City> searchResult = cityService.search(citySearchCondition);
+            for (City city : searchResult) {
+                System.out.println(city);
+            }
+
+        }
+        private void searchCities2() {
+            CitySearchCondition citySearchCondition = new CitySearchCondition();
+            citySearchCondition.setName("123");
+            citySearchCondition.setSortType(SortType.ASC);
             List<City> searchResult = cityService.search(citySearchCondition);
             for (City city : searchResult) {
                 System.out.println(city);
@@ -74,6 +85,7 @@ public class TourAgencyDemo2 {
         System.out.println("--------Cities------------");
         application.printCities();
         application.searchCities();
+        application.searchCities2();
 
     }
 

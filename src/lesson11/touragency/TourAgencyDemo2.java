@@ -145,7 +145,7 @@ public class TourAgencyDemo2 {
             File fileWithInitData = null;
             try {
                 fileWithInitData = FileUtils
-                        .createFileFromResource("init-data", ".txt", StorageInitorConstants.INIT_DATA_XML_FILE);
+                        .createFileFromResource("init-data", ".xml", StorageInitorConstants.INIT_DATA_XML_FILE);
                 storageInitor.initStorageWithCountriesAndCities(fileWithInitData.getAbsolutePath(), StorageInitializer.DataSourceType.XML_FILE);
             } catch (CheckedException e) {
                 System.out.println("ERROR while init storage: " + e.getMessage());

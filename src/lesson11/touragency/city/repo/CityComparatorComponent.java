@@ -7,7 +7,7 @@ import java.util.*;
 
 import static lesson11.touragency.city.search.CityOrderByField.CLIMATE;
 import static lesson11.touragency.city.search.CityOrderByField.NAME;
-import static lesson11.touragency.common.business.repo.CommonComparatorHolder.getComparatorForNullableStrings;
+import static lesson11.touragency.common.business.repo.CommonComparatorHolder.*;
 
 public final class CityComparatorComponent {
     private static final CityComparatorComponent INSTANCE = new CityComparatorComponent();

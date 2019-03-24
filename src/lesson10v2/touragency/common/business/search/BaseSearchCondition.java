@@ -1,7 +1,7 @@
 package lesson10v2.touragency.common.business.search;
 
-public abstract class BaseSearchCondition {
-    protected Long id;
+public abstract class BaseSearchCondition<ID> {
+    protected ID id;
     protected OrderDirection orderDirection;
     protected OrderType orderType = OrderType.SIMPLE;
 
@@ -25,11 +25,11 @@ public abstract class BaseSearchCondition {
         return  orderType != null;
     }
 
-    public Long getId() {
+    public ID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(ID id) {
         this.id = id;
     }
 }

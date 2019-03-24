@@ -2,7 +2,7 @@ package lesson10v2.touragency.city.search;
 
 import lesson10v2.touragency.common.business.search.BaseSearchCondition;
 
-public class CitySearchCondition extends BaseSearchCondition {
+public class CitySearchCondition extends BaseSearchCondition<Long> {
     private String name;
 
     public CityOrderByField getOrderByField() {

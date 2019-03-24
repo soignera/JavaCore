@@ -1,6 +1,7 @@
 package lesson10v2.touragency.country.service;
 
-import lesson10v2.touragency.common.business.service.BaseService;
+
+import lesson10v2.touragency.common.solution.BaseService;
 import lesson10v2.touragency.country.domain.Country;
 import lesson10v2.touragency.country.search.CountrySearchCondition;
 

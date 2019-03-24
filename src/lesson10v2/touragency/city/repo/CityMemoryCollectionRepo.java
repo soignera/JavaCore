@@ -23,7 +23,7 @@ public class CityMemoryCollectionRepo implements CityRepo {
 
 
     @Override
-    public City findById(long id) {
+    public City findById(Long id) {
         return findCityById(id);
     }
 
@@ -92,7 +92,7 @@ public class CityMemoryCollectionRepo implements CityRepo {
 
 
     @Override
-    public void deleteById(long id) {
+    public void deleteById(Long id) {
         City found = findCityById(id);
 
         if (found != null) {

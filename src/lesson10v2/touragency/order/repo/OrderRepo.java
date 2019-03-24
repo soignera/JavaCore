@@ -1,6 +1,7 @@
 package lesson10v2.touragency.order.repo;
 
-import lesson10v2.touragency.common.business.repo.BaseRepo;
+
+import lesson10v2.touragency.common.solution.BaseRepo;
 import lesson10v2.touragency.order.domain.Order;
 import lesson10v2.touragency.order.search.OrderSearchCondition;
 

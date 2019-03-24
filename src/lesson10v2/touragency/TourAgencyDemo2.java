@@ -51,7 +51,7 @@ public class TourAgencyDemo2 {
 //
 //        }
         public void searchCitiesWithoutOrder() {
-            System.out.println("\n----------Search marks No order ------------");
+            System.out.println("\n----------Search countries No order ------------");
             CitySearchCondition citySearchCondition = new CitySearchCondition();
             List<City> searchResult = cityService.search(citySearchCondition);
             for (City city : searchResult) {
@@ -60,7 +60,7 @@ public class TourAgencyDemo2 {
         }
 
         public void searchCitiesWithOrderAsc() {
-            System.out.println("\n----------Search marks Order ASC ------------");
+            System.out.println("\n----------Search countries Order ASC ------------");
             CitySearchCondition citySearchCondition = new CitySearchCondition();
             citySearchCondition.setOrderDirection(OrderDirection.ASC);
             citySearchCondition.setOrderByField(CityOrderByField.CLIMATE);
@@ -71,7 +71,7 @@ public class TourAgencyDemo2 {
         }
 
         public void searchCitiesWithOrderDesc() {
-            System.out.println("\n----------Search marks Order Desc ------------");
+            System.out.println("\n----------Search countries Order Desc ------------");
             CitySearchCondition citySearchCondition = new CitySearchCondition();
             citySearchCondition.setOrderDirection(OrderDirection.DESC);
             citySearchCondition.setOrderByField(CityOrderByField.CLIMATE);
@@ -82,7 +82,7 @@ public class TourAgencyDemo2 {
         }
 
         public void searchCitiesWithComplexOrderAsc() {
-            System.out.println("\n----------Search marks COMPLEX Order Desc ------------");
+            System.out.println("\n----------Search countries COMPLEX Order Desc ------------");
             CitySearchCondition citySearchCondition = new CitySearchCondition();
             citySearchCondition.setOrderDirection(OrderDirection.ASC);
             citySearchCondition.setOrderByField(CityOrderByField.CLIMATE);
@@ -94,7 +94,7 @@ public class TourAgencyDemo2 {
         }
 
         public void searchCitiesWithComplexOrderDesc() {
-            System.out.println("\n----------Search marks COMPLEX Order Desc ------------");
+            System.out.println("\n----------Search countries COMPLEX Order Desc ------------");
             CitySearchCondition citySearchCondition = new CitySearchCondition();
             citySearchCondition.setOrderDirection(OrderDirection.DESC);
             citySearchCondition.setOrderByField(CityOrderByField.CLIMATE);

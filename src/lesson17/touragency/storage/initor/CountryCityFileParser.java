@@ -35,7 +35,7 @@ public class CountryCityFileParser implements Runnable {
         return countries;
     }
 
-    public void asyncParseMarks() {
+    public void asyncParseCountries() {
         thread.start();
     }
 

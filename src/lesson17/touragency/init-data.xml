@@ -3,59 +3,55 @@
     <countries>
 
         <country>
-            <name>Toyota  </name>
-            <languag>Japan</languag>
+            <name>Japan  </name>
+            <languag>Japanese</languag>
             <cities>
                 <city type="COLD">
-                    <name>Land cruiser 200</name>
+                    <name>Tokyo</name>
                     <population>1990</population>
                     <coldestTemp>4</coldestTemp>
-                    <coldestMonth>BestAudio</coldestMonth>
+                    <coldestMonth>January</coldestMonth>
                 </city>
             </cities>
         </country>
-
-
         <country>
-            <name>Ural</name>
-            <languag>Russia</languag>
+            <name>USA</name>
+            <languag>English</languag>
             <cities>
                 <city type="HOT">
-                    <name>53125</name>
+                    <name>LosAngeles</name>
                     <population>1970</population>
                     <hottestTemp>4</hottestTemp>
-                    <hottestMonth>BestAudio</hottestMonth>
+                    <hottestMonth>July</hottestMonth>
                 </city>
             </cities>
         </country>
-
-
-
         <country>
-            <name>Mercedes-Benz</name>
-            <languag>Germany</languag>
+            <name>Kazakhstan</name>
+            <languag>ShalaKazakh</languag>
             <cities>
                 <city type="COLD">
-                    <name>G-500 Amg</name>
+                    <name>Nursultan</name>
                     <population>1960</population>
                     <coldestTemp>6</coldestTemp>
-                    <coldestMonth>Sony</coldestMonth>
+                    <coldestMonth>February</coldestMonth>
                 </city>
                 <city type="COLD">
-                    <name>SLR McLaren</name>
+                    <name>Karaganda</name>
                     <population>2002</population>
                     <coldestTemp>2008</coldestTemp>
-                    <coldestMonth>Prestige</coldestMonth>
+                    <coldestMonth>March</coldestMonth>
                 </city>
                 <city type="HOT">
-                    <name>Actros</name>
+                    <name>Almaty</name>
                     <population>2002</population>
-                    <hottestMonth>Prestige</hottestMonth>
+                    <hottestMonth>June</hottestMonth>
                     <hottestTemp>2008</hottestTemp>
 
                 </city>
             </cities>
         </country>
+
 
     </countries>
 

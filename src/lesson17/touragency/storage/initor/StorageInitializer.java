@@ -48,7 +48,7 @@ public void initStorageWithCountriesAndCities(List<File> files, DataSourceType d
 
     private List<Country> asyncParseFilesAndWaitForResult(List<CountryCityFileParser> workers) throws Exception {
         for (CountryCityFileParser worker : workers) {
-            worker.asyncParseMarks();
+            worker.asyncParseCountries();
         }
 
         List<Country> countriesToPersist = new ArrayList<>();

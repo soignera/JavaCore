@@ -2,7 +2,7 @@ package lesson17.touragency.country.search;
 
 import lesson17.touragency.common.business.search.BaseSearchCondition;
 
-import static lesson11.touragency.common.solution.utils.StringUtils.isNotBlank;
+import static lesson17.touragency.common.solution.utils.StringUtils.isNotBlank;
 
 public class CountrySearchCondition extends BaseSearchCondition<Long> {
     private String name;

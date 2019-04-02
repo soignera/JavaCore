@@ -267,13 +267,14 @@ public class TourAgencyDemo2 {
 //        application.searchCities();
 //        application.searchCities2();
         application.searchCitiesWithoutOrder();
-        application.searchCitiesWithOrderAsc();
-        application.searchCitiesWithOrderDesc();
-        application.searchCitiesWithComplexOrderAsc();
-        application.searchCitiesWithComplexOrderDesc();
+//        application.searchCitiesWithOrderAsc();
+//        application.searchCitiesWithOrderDesc();
+//        application.searchCitiesWithComplexOrderAsc();
+  //      application.searchCitiesWithComplexOrderDesc();
 
-        application.demoReporting();
+        //application.demoReporting();
         application.searchCountriesWithPaginator();
+        application.searchCountriesWithoutOrder();
 
 
     }

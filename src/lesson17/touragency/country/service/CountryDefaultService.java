@@ -11,6 +11,7 @@ import lesson17.touragency.country.repo.CountryRepo;
 import lesson17.touragency.country.search.CountrySearchCondition;
 import lesson17.touragency.order.repo.OrderRepo;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -28,9 +29,25 @@ public class CountryDefaultService implements CountryService {
         this.cityService = cityService;
         this.orderRepo = orderRepo;
     }
+    @Override
+    public void add(Collection<Country> countries) {
+        if (countries != null && !countries.isEmpty()) {
+            for (Country country : countries) {
+                countryRepo.add(country);
+
+                if (country.getCities() != null && !country.getCities().isEmpty()) {
+                    country.getCities().replaceAll(city -> {
+                        city.setCountryId(country.getId());
+                        return city;
+                    });
+                    cityService.add(country.getCities());
+                }
+            }
+        }
+    }
 
     @Override
-    public void add(Country country) {
+    public Country add(Country country) {
         if (country != null) {
             countryRepo.add(country);
 
@@ -42,6 +59,7 @@ public class CountryDefaultService implements CountryService {
                 }
             }
         }
+        return country;
     }
 
     @Override

@@ -5,7 +5,7 @@ import lesson17.touragency.country.service.CountryService;
 import lesson17.touragency.order.service.OrderService;
 import lesson17.touragency.user.service.UserService;
 
-public class ServiceSupplier {
+public final class ServiceSupplier {
     private static volatile ServiceSupplier INSTANCE;
     private ServiceFactory serviceFactory;
 

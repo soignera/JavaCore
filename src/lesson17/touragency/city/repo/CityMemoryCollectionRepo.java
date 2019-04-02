@@ -4,10 +4,7 @@ import lesson17.touragency.city.domain.City;
 import lesson17.touragency.city.search.CitySearchCondition;
 import lesson17.touragency.storage.AtomicSequenceGenerator;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static lesson17.touragency.common.solution.utils.StringUtils.isNotBlank;
 import static lesson17.touragency.storage.Storage.citiesList;
@@ -18,11 +15,19 @@ public class CityMemoryCollectionRepo implements CityRepo {
 
 
     @Override
-    public void add(City city) {
+    public City add(City city) {
         city.setId(AtomicSequenceGenerator.getNextValue());
         citiesList.add(city);
+
+        return city;
     }
 
+    @Override
+    public void add(Collection<City> cities) {
+        for (City city : cities) {
+            add(city);
+        }
+    }
 
     @Override
     public City findById(Long id) {

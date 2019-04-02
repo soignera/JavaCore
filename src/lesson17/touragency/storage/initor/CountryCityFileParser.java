@@ -3,7 +3,7 @@ package lesson17.touragency.storage.initor;
 import lesson17.touragency.country.domain.Country;
 import lesson17.touragency.storage.initor.datasourcereader.CountriesWithCitiesTxtFileParser;
 import lesson17.touragency.storage.initor.datasourcereader.CountriesWithCitiesXmlStaxParser;
-import lesson17.touragency.storage.initor.datasourcereader.FileParser;
+import lesson17.touragency.common.solution.parser.FileParser;
 
 import java.io.File;
 import java.util.List;

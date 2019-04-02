@@ -29,7 +29,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static lesson11.touragency.common.solution.utils.RandomUtils.getRandomInt;
-import static lesson17.touragency.common.application.ApplicationConfigurations.PAGE_SIZE;
+import static lesson17.touragency.common.application.ApplicationConfigurations.*;
+import static lesson17.touragency.common.solution.utils.FileUtils.createFileFromResource;
 
 public class TourAgencyDemo2 {
     private static class Application {
@@ -45,13 +46,13 @@ public class TourAgencyDemo2 {
         //private CityService cityService = CityDefaultService.getServiceInstance();
 
 
-        private void addCountries() {
-            //List<City> listCitites= new ArrayList<>();
-            countryService.add(new Country("123", "123"));
-            countryService.add(new Country("123", "123"));
-            countryService.add(new Country("123", "123"));
-
-        }
+//        private void addCountries() {
+//            //List<City> listCitites= new ArrayList<>();
+//            countryService.add(new Country("123", "123"));
+//            countryService.add(new Country("123", "123"));
+//            countryService.add(new Country("123", "123"));
+//
+//        }
 
         //        private void searchCities() {
 //            CitySearchCondition citySearchCondition = new CitySearchCondition();
@@ -140,13 +141,12 @@ public class TourAgencyDemo2 {
 
 
         public void fillStorage() throws Exception {
-            addCountries();
+            //addCountries();
             StorageInitializer storageInitor = new StorageInitializer(countryService);
-            File fileWithInitData = null;
+            List<File> filesWithInitData = null;
             try {
-                fileWithInitData = FileUtils
-                        .createFileFromResource("init-data", ".xml", StorageInitorConstants.INIT_DATA_XML_FILE);
-                storageInitor.initStorageWithCountriesAndCities(fileWithInitData.getAbsolutePath(), StorageInitializer.DataSourceType.XML_FILE);
+                filesWithInitData = getFilesWithDataToInit();
+                storageInitor.initStorageWithCountriesAndCities(filesWithInitData, StorageInitializer.DataSourceType.XML_FILE);
             } catch (CheckedException e) {
                 System.out.println("ERROR while init storage: " + e.getMessage());
                 throw e;
@@ -154,13 +154,26 @@ public class TourAgencyDemo2 {
                 System.out.println("Error: Unknown magic :" + e.getMessage());
                 throw e;
             } finally {
-                if (fileWithInitData != null) {
-                    Files.delete(Paths.get(fileWithInitData.toURI()));
+                if (filesWithInitData != null) {
+                    for (File file : filesWithInitData) {
+                        Files.delete(Paths.get(file.toURI()));
+                    }
                 }
             }
             appendOrdersToUsers();
 
         }
+
+        private List<File> getFilesWithDataToInit() throws Exception {
+            String files[] = new String[]{INIT_DATA_XML_FILE_PART_1, INIT_DATA_XML_FILE_PART_2};
+            List<File> result = new ArrayList<>();
+
+            for (String file : files) {
+                result.add(createFileFromResource("init-data", ".txt", file));
+            }
+            return result;
+        }
+
 
         private void appendOrdersToUsers() {
             List<City> cities = cityService.findAll();
@@ -177,9 +190,9 @@ public class TourAgencyDemo2 {
                 }
             }
 
-            for (Order order : orders) {
-                orderService.add(order);
-            }
+
+                orderService.add(orders);
+
         }
 
         private Order prepareOrderForUser(User user, List<City> cities) {

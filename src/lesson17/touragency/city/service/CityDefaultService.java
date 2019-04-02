@@ -7,6 +7,7 @@ import lesson17.touragency.city.repo.CityRepo;
 import lesson17.touragency.city.search.CitySearchCondition;
 import lesson17.touragency.order.repo.OrderRepo;
 
+import java.util.Collection;
 import java.util.List;
 
 
@@ -28,14 +29,23 @@ public class CityDefaultService implements CityService {
 //        }
 //        return cityServiceInstance;
 //    }
-
+@Override
+public void add(Collection<City> cities) {
+    if (cities != null && !cities.isEmpty()) {
+        cityRepo.add(cities);
+    }
+}
 
     @Override
-    public void add(City city) {
+    public City add(City city) {
         if (city != null) {
             cityRepo.add(city);
         }
+
+        return city;
     }
+
+
 
     @Override
     public City findById(Long id) {

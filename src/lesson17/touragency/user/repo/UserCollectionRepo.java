@@ -5,6 +5,7 @@ import lesson17.touragency.storage.AtomicSequenceGenerator;
 import lesson17.touragency.user.domain.User;
 import lesson17.touragency.user.search.UserSearchCondition;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -13,9 +14,18 @@ import static lesson17.touragency.storage.Storage.usersList;
 public class UserCollectionRepo implements UserRepo {
 
     @Override
-    public void add(User user) {
+    public User add(User user) {
         user.setId(AtomicSequenceGenerator.getNextValue());
         usersList.add(user);
+
+        return user;
+    }
+
+    @Override
+    public void add(Collection<User> users) {
+        for (User user : users) {
+            add(user);
+        }
     }
 
     @Override

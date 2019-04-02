@@ -5,6 +5,7 @@ import lesson17.touragency.order.search.OrderSearchCondition;
 import lesson17.touragency.storage.AtomicSequenceGenerator;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -12,9 +13,18 @@ import static lesson17.touragency.storage.Storage.ordersList;
 
 public class OrderCollectionRepo implements OrderRepo {
     @Override
-    public void add(Order order) {
+    public Order add(Order order) {
         order.setId(AtomicSequenceGenerator.getNextValue());
         ordersList.add(order);
+
+        return order;
+    }
+
+    @Override
+    public void add(Collection<Order> orders) {
+        for (Order order : orders) {
+            add(order);
+        }
     }
 
     @Override

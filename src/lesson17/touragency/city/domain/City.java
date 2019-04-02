@@ -11,6 +11,7 @@ public abstract class City extends BaseDomain implements Comparable<City>
         private int population;
         private boolean capital;
         protected CityDiscriminator discriminator;
+    protected Long countryId;
 
     public City() {
        initDiscriminator();
@@ -56,6 +57,14 @@ public abstract class City extends BaseDomain implements Comparable<City>
 
     public void setCapital(boolean capital) {
         this.capital = capital;
+    }
+
+    public Long getCountryId() {
+        return countryId;
+    }
+
+    public void setCountryId(Long countryId) {
+        this.countryId = countryId;
     }
 
     @Override

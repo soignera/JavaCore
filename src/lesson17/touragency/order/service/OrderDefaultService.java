@@ -4,6 +4,7 @@ import lesson17.touragency.order.domain.Order;
 import lesson17.touragency.order.repo.OrderRepo;
 import lesson17.touragency.order.search.OrderSearchCondition;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -15,9 +16,18 @@ public class OrderDefaultService implements OrderService {
     }
 
     @Override
-    public void add(Order order) {
+    public Order add(Order order) {
         if (order != null) {
             orderRepo.add(order);
+        }
+
+        return order;
+    }
+
+    @Override
+    public void add(Collection<Order> orders) {
+        if (orders != null && !orders.isEmpty()) {
+            orderRepo.add(orders);
         }
     }
 

@@ -6,6 +6,7 @@ import lesson17.touragency.user.domain.User;
 import lesson17.touragency.user.repo.UserRepo;
 import lesson17.touragency.user.search.UserSearchCondition;
 
+import java.util.Collection;
 import java.util.List;
 
 public class UserDefaultService implements UserService {
@@ -19,9 +20,18 @@ public class UserDefaultService implements UserService {
 
 
     @Override
-    public void add(User user) {
+    public User add(User user) {
         if (user != null) {
             userRepo.add(user);
+        }
+
+        return user;
+    }
+
+    @Override
+    public void add(Collection<User> users) {
+        if (users != null && !users.isEmpty()) {
+            userRepo.add(users);
         }
     }
     @Override

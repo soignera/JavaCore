@@ -5,6 +5,7 @@ import lesson17.touragency.country.search.CountrySearchCondition;
 import lesson17.touragency.storage.AtomicSequenceGenerator;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -14,9 +15,18 @@ public class CountryCollectionRepo implements CountryRepo {
     private CountryOrderingComponent orderingComponent = new CountryOrderingComponent();
 
     @Override
-    public void add(Country country) {
+    public Country add(Country country) {
         country.setId(AtomicSequenceGenerator.getNextValue());
         countriesList.add(country);
+
+        return country;
+    }
+
+    @Override
+    public void add(Collection<Country> countries) {
+        for (Country country : countries) {
+            add(country);
+        }
     }
 
     @Override

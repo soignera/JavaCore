@@ -1,9 +1,12 @@
 package lesson17.touragency.common.solution;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface BaseRepo<TYPE, ID> {
-    void add(TYPE entity);
+    TYPE add(TYPE entity);
+
+    void add(Collection<TYPE> items);
 
     void update(TYPE entity);
 

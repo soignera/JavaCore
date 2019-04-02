@@ -1,6 +1,7 @@
 package lesson17.touragency.storage.initor.exception;
 
 public enum InitDataExceptionMeta {
+    PARSE_COUNTRY_CITY_ERROR(2, "Error while parse file with mark model data."),
     PARSE_CITY_DISCRIMINATOR_ERROR(1, "Unknown city discriminator '%s'.");
 
     private int code;

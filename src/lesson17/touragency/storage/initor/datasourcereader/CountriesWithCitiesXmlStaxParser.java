@@ -4,6 +4,7 @@ import lesson17.touragency.city.domain.City;
 import lesson17.touragency.city.domain.CityDiscriminator;
 import lesson17.touragency.city.domain.ColdCity;
 import lesson17.touragency.city.domain.HotCity;
+import lesson17.touragency.common.solution.parser.FileParser;
 import lesson17.touragency.common.solution.xml.stax.parse.CustomStaxReader;
 import lesson17.touragency.country.domain.Country;
 

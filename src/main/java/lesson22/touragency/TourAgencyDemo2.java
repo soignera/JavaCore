@@ -1,34 +1,35 @@
 package lesson22.touragency;
 
-import lesson17.touragency.city.domain.City;
-import lesson17.touragency.city.search.CityOrderByField;
-import lesson17.touragency.city.search.CitySearchCondition;
-import lesson17.touragency.city.service.CityService;
-import lesson17.touragency.common.business.application.ServiceSupplier;
-import lesson17.touragency.common.business.application.StorageType;
-import lesson17.touragency.common.business.exception.CheckedException;
-import lesson17.touragency.common.business.search.OrderDirection;
-import lesson17.touragency.common.business.search.OrderType;
-import lesson17.touragency.common.business.search.Paginator;
-import lesson17.touragency.country.domain.Country;
-import lesson17.touragency.country.search.CountrySearchCondition;
-import lesson17.touragency.country.service.CountryService;
-import lesson17.touragency.order.domain.Order;
-import lesson17.touragency.order.service.OrderService;
-import lesson17.touragency.reporting.ReportProvider;
-import lesson17.touragency.storage.initor.StorageInitializer;
-import lesson17.touragency.user.domain.User;
-import lesson17.touragency.user.service.UserService;
+import lesson22.touragency.city.domain.City;
+import lesson22.touragency.city.search.CityOrderByField;
+import lesson22.touragency.city.search.CitySearchCondition;
+import lesson22.touragency.city.service.CityService;
+import lesson22.touragency.common.business.application.ServiceSupplier;
+import lesson22.touragency.common.business.application.StorageType;
+import lesson22.touragency.common.business.exception.CheckedException;
+import lesson22.touragency.common.business.search.OrderDirection;
+import lesson22.touragency.common.business.search.OrderType;
+import lesson22.touragency.common.business.search.Paginator;
+import lesson22.touragency.country.domain.Country;
+import lesson22.touragency.country.search.CountrySearchCondition;
+import lesson22.touragency.country.service.CountryService;
+import lesson22.touragency.order.domain.Order;
+import lesson22.touragency.order.service.OrderService;
+import lesson22.touragency.reporting.ReportProvider;
+import lesson22.touragency.storage.initor.StorageInitializer;
+import lesson22.touragency.user.domain.User;
+import lesson22.touragency.user.service.UserService;
 
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import static lesson11.touragency.common.solution.utils.RandomUtils.getRandomInt;
-import static lesson17.touragency.common.application.ApplicationConfigurations.*;
-import static lesson17.touragency.common.solution.utils.FileUtils.createFileFromResource;
+import static lesson22.touragency.common.application.ApplicationConfigurations.*;
+import static lesson22.touragency.common.solution.utils.FileUtils.createFileFromResource;
+import static lesson22.touragency.common.solution.utils.RandomUtils.getRandomInt;
 
 public class TourAgencyDemo2 {
     private static class Application {
@@ -43,14 +44,18 @@ public class TourAgencyDemo2 {
 
         //private CityService cityService = CityDefaultService.getServiceInstance();
 
+        public void fillStorage() {
+            insertUsers();
+            insertOrders();
+        }
 
-//        private void addCountries() {
-//            //List<City> listCitites= new ArrayList<>();
-//            countryService.add(new Country("123", "123"));
-//            countryService.add(new Country("123", "123"));
-//            countryService.add(new Country("123", "123"));
-//
-//        }
+        private void insertUsers() {
+            //List<City> listCitites= new ArrayList<>();
+            userService.add(new User("123", "123",1));
+            countryService.add(new Country("123", "123"));
+            countryService.add(new Country("123", "123"));
+
+        }
 
         //        private void searchCities() {
 //            CitySearchCondition citySearchCondition = new CitySearchCondition();
@@ -71,6 +76,39 @@ public class TourAgencyDemo2 {
 //            }
 //
 //        }
+        private Order prepareOrderForUser(User user, List<Country> countries) {
+            Order order = new Order();
+            order.setUser(user);
+            Country country = countries.get(getRandomInt(0, countries.size() - 1));
+            order.setCountry(country);
+            order.setCity(country.getCities().get(getRandomInt(0, country.getCities().size() - 1)));
+            order.setPrice(getRandomInt(1, 100000));
+            List<String> problems = Arrays.asList("Не заводится",
+                    "Еле едет", "Запах масла в салоне", "Стучит подвеска", "Ржавчина на пороге", "Помято крыло", "Не греют сиденья",
+                    "Не включается дальний свет");
+
+            order.setDescription(problems.get(getRandomInt(0, problems.size() - 1)));
+            return order;
+        }
+        private void insertOrders() {
+            List<Country> countries = countryService.findAllCountriesFetchingCities();
+            List<User> users = userService.findAll();
+
+            List<Order> orders = new ArrayList<>();
+            int i = 0;
+            for (User user : users) {
+                i++;
+                orders.add(prepareOrderForUser(user, countries));
+
+                if (i % 2 == 0) {
+                    orders.add(prepareOrderForUser(user, countries));
+                }
+            }
+            orderService.add(orders);
+
+            //test transaction
+            orderService.update(orders.get(0));
+        }
         public void searchCountriesWithoutOrder() {
             System.out.println("\n----------Search countries No order ------------");
             CountrySearchCondition countrySearchCondition = new CountrySearchCondition();

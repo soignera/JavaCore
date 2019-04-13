@@ -1,12 +1,10 @@
 package lesson22.touragency.common.business.application;
 
-import lesson17.touragency.city.service.CityService;
-import lesson17.touragency.common.business.application.MemoryCollectionServiceFactory;
-import lesson17.touragency.common.business.application.ServiceFactory;
-import lesson17.touragency.common.business.application.StorageType;
-import lesson17.touragency.country.service.CountryService;
-import lesson17.touragency.order.service.OrderService;
-import lesson17.touragency.user.service.UserService;
+
+import lesson22.touragency.city.service.CityService;
+import lesson22.touragency.country.service.CountryService;
+import lesson22.touragency.order.service.OrderService;
+import lesson22.touragency.user.service.UserService;
 
 public final class ServiceSupplier {
     private static volatile ServiceSupplier INSTANCE;
@@ -16,7 +14,7 @@ public final class ServiceSupplier {
         return INSTANCE;
     }
 
-    public static ServiceSupplier newInstance(lesson17.touragency.common.business.application.StorageType storageType) {
+    public static ServiceSupplier newInstance(StorageType storageType) {
 
         if (INSTANCE == null) {
             synchronized (ServiceSupplier.class) {
@@ -28,15 +26,22 @@ public final class ServiceSupplier {
         return INSTANCE;
     }
 
-    private ServiceSupplier(lesson17.touragency.common.business.application.StorageType storageType) {
+    private ServiceSupplier(StorageType storageType) {
         initServiceFactory(storageType);
     }
 
     private void initServiceFactory(StorageType storageType) {
         switch (storageType) {
-//            case MEMORY_ARRAY: {
-//                serviceFactory = new MemoryArrayServiceFactory();
-//            }
+            case MEMORY_ARRAY: {
+                serviceFactory = new MemoryArrayServiceFactory();
+                break;
+            }
+
+            case RELATIONAL_DB: {
+                serviceFactory = new RelationalDbServiceFactory();
+                break;
+            }
+
             default: {
                 serviceFactory = new MemoryCollectionServiceFactory();
             }

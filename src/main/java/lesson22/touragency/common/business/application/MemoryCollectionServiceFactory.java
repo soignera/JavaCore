@@ -1,22 +1,22 @@
 package lesson22.touragency.common.business.application;
 
-import lesson17.touragency.city.repo.CityMemoryCollectionRepo;
-import lesson17.touragency.city.repo.CityRepo;
-import lesson17.touragency.city.service.CityDefaultService;
-import lesson17.touragency.city.service.CityService;
-import lesson17.touragency.common.business.application.ServiceFactory;
-import lesson17.touragency.country.repo.CountryCollectionRepo;
-import lesson17.touragency.country.repo.CountryRepo;
-import lesson17.touragency.country.service.CountryDefaultService;
-import lesson17.touragency.country.service.CountryService;
-import lesson17.touragency.order.repo.OrderCollectionRepo;
-import lesson17.touragency.order.repo.OrderRepo;
-import lesson17.touragency.order.service.OrderDefaultService;
-import lesson17.touragency.order.service.OrderService;
-import lesson17.touragency.user.repo.UserCollectionRepo;
-import lesson17.touragency.user.repo.UserRepo;
-import lesson17.touragency.user.service.UserDefaultService;
-import lesson17.touragency.user.service.UserService;
+import lesson22.touragency.city.repo.CityMemoryCollectionRepo;
+import lesson22.touragency.city.repo.CityRepo;
+import lesson22.touragency.city.service.CityDefaultService;
+import lesson22.touragency.city.service.CityService;
+import lesson22.touragency.common.business.application.ServiceFactory;
+import lesson22.touragency.country.repo.CountryCollectionRepo;
+import lesson22.touragency.country.repo.CountryRepo;
+import lesson22.touragency.country.service.CountryDefaultService;
+import lesson22.touragency.country.service.CountryService;
+import lesson22.touragency.order.repo.OrderCollectionRepo;
+import lesson22.touragency.order.repo.OrderRepo;
+import lesson22.touragency.order.service.OrderDefaultService;
+import lesson22.touragency.order.service.OrderService;
+import lesson22.touragency.user.repo.UserCollectionRepo;
+import lesson22.touragency.user.repo.UserRepo;
+import lesson22.touragency.user.service.UserDefaultService;
+import lesson22.touragency.user.service.UserService;
 
 public class MemoryCollectionServiceFactory implements ServiceFactory {
     private OrderRepo orderRepo = new OrderCollectionRepo();

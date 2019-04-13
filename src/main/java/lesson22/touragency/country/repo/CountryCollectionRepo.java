@@ -1,17 +1,17 @@
 package lesson22.touragency.country.repo;
 
-import lesson17.touragency.country.domain.Country;
-import lesson17.touragency.country.repo.CountryOrderingComponent;
-import lesson17.touragency.country.repo.CountryRepo;
-import lesson17.touragency.country.search.CountrySearchCondition;
-import lesson17.touragency.storage.AtomicSequenceGenerator;
+import lesson22.touragency.country.domain.Country;
+import lesson22.touragency.country.repo.CountryOrderingComponent;
+import lesson22.touragency.country.repo.CountryRepo;
+import lesson22.touragency.country.search.CountrySearchCondition;
+import lesson22.touragency.storage.AtomicSequenceGenerator;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import static lesson17.touragency.storage.Storage.countriesList;
+import static lesson22.touragency.storage.Storage.countriesList;
 
 public class CountryCollectionRepo implements CountryRepo {
     private CountryOrderingComponent orderingComponent = new CountryOrderingComponent();
@@ -23,7 +23,10 @@ public class CountryCollectionRepo implements CountryRepo {
 
         return country;
     }
-
+    @Override
+    public List<Country> findAllCountriesFetchingModels() {
+        return countriesList;
+    }
     @Override
     public void add(Collection<Country> countries) {
         for (Country country : countries) {

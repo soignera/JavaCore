@@ -1,4 +1,4 @@
-package lesson22.touragency.common.solution;
+package lesson22.touragency.common.solution.repo;
 
 import java.util.Collection;
 import java.util.List;

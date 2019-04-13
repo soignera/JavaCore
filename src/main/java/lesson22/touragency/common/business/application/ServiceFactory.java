@@ -1,9 +1,9 @@
 package lesson22.touragency.common.business.application;
 
-import lesson17.touragency.city.service.CityService;
-import lesson17.touragency.country.service.CountryService;
-import lesson17.touragency.order.service.OrderService;
-import lesson17.touragency.user.service.UserService;
+import lesson22.touragency.city.service.CityService;
+import lesson22.touragency.country.service.CountryService;
+import lesson22.touragency.order.service.OrderService;
+import lesson22.touragency.user.service.UserService;
 
 public interface ServiceFactory {
     CityService getCityService();

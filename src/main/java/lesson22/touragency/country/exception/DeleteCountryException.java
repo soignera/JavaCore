@@ -1,7 +1,6 @@
 package lesson22.touragency.country.exception;
 
-import lesson17.touragency.common.business.exception.UncheckedException;
-import lesson17.touragency.country.exception.CountryExceptionMeta;
+import lesson22.touragency.common.business.exception.UncheckedException;
 
 public class DeleteCountryException extends UncheckedException {
     public DeleteCountryException(int code, String message) {

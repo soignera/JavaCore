@@ -1,9 +1,9 @@
-package lesson22.touragency.common.business.application;//package lesson8.touragency.common.business.application;
+package lesson22.touragency.common.business.application;
 
-
+import lesson22.touragency.city.service.CityService;
 import lesson22.touragency.city.repo.CityRepo;
 import lesson22.touragency.city.service.CityDefaultService;
-import lesson22.touragency.city.service.CityService;
+import lesson22.touragency.country.repo.CountryRepo;
 import lesson22.touragency.country.service.CountryDefaultService;
 import lesson22.touragency.country.service.CountryService;
 import lesson22.touragency.order.repo.OrderRepo;
@@ -12,13 +12,12 @@ import lesson22.touragency.order.service.OrderService;
 import lesson22.touragency.user.repo.UserRepo;
 import lesson22.touragency.user.service.UserDefaultService;
 import lesson22.touragency.user.service.UserService;
-import lesson22.touragency.country.repo.CountryRepo;
 
-public class MemoryArrayServiceFactory implements ServiceFactory {
-    private OrderRepo orderRepo = new OrderArrayRepo();
-    private CityRepo cityRepo = new CityArrayRepo();
-    private CountryRepo countryRepo = new CountryArrayRepo();
-    private UserRepo userRepo = new UserArrayRepo();
+public class RelationalDbServiceFactory implements ServiceFactory {
+    private OrderRepo orderRepo = new OrderDefaultRepoImpl();
+    private CityRepo cityRepo = new CityDefaultRepoImpl();
+    private CountryRepo countryRepo = new CountryDefaultRepoImpl();
+    private UserRepo userRepo = new UserDefaultRepoImpl();
 
     private CityService cityService = new CityDefaultService(cityRepo, orderRepo);
     private OrderService orderService = new OrderDefaultService(orderRepo, countryRepo, cityRepo, userRepo);

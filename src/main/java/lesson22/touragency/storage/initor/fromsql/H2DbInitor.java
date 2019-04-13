@@ -1,7 +1,8 @@
 package lesson22.touragency.storage.initor.fromsql;
 
-import lesson22.touragency.common.solution.utils.CollectionUtils;
+import lesson22.touragency.common.business.database.datasource.HikariCpDataSource;
 import lesson22.touragency.storage.initor.Initor;
+import org.apache.commons.collections4.CollectionUtils;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;

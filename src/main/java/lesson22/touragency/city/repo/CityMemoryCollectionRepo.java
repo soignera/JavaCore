@@ -1,10 +1,10 @@
 package lesson22.touragency.city.repo;
 
-import lesson17.touragency.city.domain.City;
-import lesson17.touragency.city.repo.CityOrderingComponent;
-import lesson17.touragency.city.repo.CityRepo;
-import lesson17.touragency.city.search.CitySearchCondition;
-import lesson17.touragency.storage.AtomicSequenceGenerator;
+import lesson22.touragency.city.domain.City;
+import lesson22.touragency.city.repo.CityOrderingComponent;
+import lesson22.touragency.city.repo.CityRepo;
+import lesson22.touragency.city.search.CitySearchCondition;
+import lesson22.touragency.storage.AtomicSequenceGenerator;
 
 import java.util.*;
 

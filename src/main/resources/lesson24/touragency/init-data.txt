@@ -1,0 +1,5 @@
+Country: Toyota | Japan
+COLD |Land cruiser 200   | 1990 | -1 | 4
+
+Country: Ural | Russia
+HOT | Power 200 | 1970 | -1  | 10000

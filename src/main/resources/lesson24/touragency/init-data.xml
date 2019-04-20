@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<init-data>
+    <countries>
+
+        <country>
+            <name>Japan  </name>
+            <languag>Japanese</languag>
+            <cities>
+                <city type="COLD">
+                    <name>Tokyo</name>
+                    <population>1990</population>
+                    <coldestTemp>4</coldestTemp>
+                    <coldestMonth>January</coldestMonth>
+                </city>
+            </cities>
+        </country>
+        <country>
+            <name>USA</name>
+            <languag>English</languag>
+            <cities>
+                <city type="HOT">
+                    <name>LosAngeles</name>
+                    <population>1970</population>
+                    <hottestTemp>4</hottestTemp>
+                    <hottestMonth>July</hottestMonth>
+                </city>
+            </cities>
+        </country>
+        <country>
+            <name>Kazakhstan</name>
+            <languag>ShalaKazakh</languag>
+            <cities>
+                <city type="COLD">
+                    <name>Nursultan</name>
+                    <population>1960</population>
+                    <coldestTemp>6</coldestTemp>
+                    <coldestMonth>February</coldestMonth>
+                </city>
+                <city type="COLD">
+                    <name>Karaganda</name>
+                    <population>2002</population>
+                    <coldestTemp>2008</coldestTemp>
+                    <coldestMonth>March</coldestMonth>
+                </city>
+                <city type="HOT">
+                    <name>Almaty</name>
+                    <population>2002</population>
+                    <hottestMonth>June</hottestMonth>
+                    <hottestTemp>2008</hottestTemp>
+
+                </city>
+            </cities>
+        </country>
+
+
+    </countries>
+
+</init-data>

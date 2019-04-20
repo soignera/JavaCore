@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="init-data" type="init-dataType"/>
+  <xs:complexType name="cityType">
+    <xs:choice maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="name">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Tokyo"/>
+            <xs:enumeration value="LosAngeles"/>
+            <xs:enumeration value="Nursultan"/>
+            <xs:enumeration value="Karaganda"/>
+            <xs:enumeration value="Almaty"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="population">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="1990"/>
+            <xs:enumeration value="1970"/>
+            <xs:enumeration value="1960"/>
+            <xs:enumeration value="2002"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="coldestTemp">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="6"/>
+            <xs:enumeration value="2008"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="coldestMonth">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="January"/>
+            <xs:enumeration value="February"/>
+            <xs:enumeration value="March"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="hottestTemp">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="2008"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="hottestMonth">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="July"/>
+            <xs:enumeration value="June"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:choice>
+    <xs:attribute type="xs:string" name="type" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="citiesType">
+    <xs:sequence>
+      <xs:element type="cityType" name="city" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="countryType">
+    <xs:sequence>
+      <xs:element name="name">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Japan  "/>
+            <xs:enumeration value="USA"/>
+            <xs:enumeration value="Kazakhstan"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="languag">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Japanese"/>
+            <xs:enumeration value="English"/>
+            <xs:enumeration value="ShalaKazakh"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="citiesType" name="cities"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="countriesType">
+    <xs:sequence>
+      <xs:element type="countryType" name="country" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="init-dataType">
+    <xs:sequence>
+      <xs:element type="countriesType" name="countries"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

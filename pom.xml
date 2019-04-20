@@ -9,6 +9,31 @@
             <artifactId>commons-collections4</artifactId>
             <version>4.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>3.2.0</version>
+
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
+
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.198</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -48,7 +73,7 @@
                 </executions>
                 <configuration>
                     <sources>
-                        <source>src/main/resources/init-data.xsd</source>
+                        <source>src/main/resources//lesson17/touragency/init-data.xsd</source>
                     </sources>
                     <packageName>lesson17.generatedclasses</packageName>
                 </configuration>

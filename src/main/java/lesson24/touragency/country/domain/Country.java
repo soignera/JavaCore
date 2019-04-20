@@ -2,6 +2,7 @@ package lesson24.touragency.country.domain;
 
 import lesson17.touragency.city.domain.City;
 import lesson17.touragency.common.business.domain.BaseDomain;
+import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.List;
 
@@ -57,6 +58,25 @@ public class Country extends BaseDomain<Long> {
                 ", languag='" + languag + '\'' +
 
                 '}';
+    }
+    private String getCitiesAsStr() {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (CollectionUtils.isNotEmpty(cities)) {
+            for (City city : cities) {
+                stringBuilder.append(city.toString()).append("\n");
+            }
+        }else{
+            stringBuilder.append("No models");
+        }
+
+        return stringBuilder.toString();
+    }
+
+    public String getAsStrWithoutCitites() {
+        return "id=" + id +
+                ", languag='" + languag + '\'' +
+                ", name='" + name + '\'';
+
     }
 
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<init-data>
+    <countries>
+        <country>
+            <name>USA</name>
+            <languag>English</languag>
+            <cities>
+                <city type="HOT">
+                    <name>LosAngeles</name>
+                    <population>1970</population>
+                    <hottestTemp>4</hottestTemp>
+                    <hottestMonth>July</hottestMonth>
+                </city>
+            </cities>
+        </country>
+    </countries>
+</init-data>

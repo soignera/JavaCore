@@ -1,9 +1,8 @@
 package lesson24.touragency.country.search;
 
-import lesson17.touragency.common.business.search.BaseSearchCondition;
-import lesson17.touragency.country.search.CountryOrderByField;
+import lesson24.touragency.common.business.search.BaseSearchCondition;
 
-import static lesson17.touragency.common.solution.utils.StringUtils.isNotBlank;
+import static lesson24.touragency.common.solution.utils.StringUtils.isNotBlank;
 
 public class CountrySearchCondition extends BaseSearchCondition<Long> {
     private String name;
@@ -35,4 +34,11 @@ public class CountrySearchCondition extends BaseSearchCondition<Long> {
     public CountryOrderByField getOrderByField() {
         return orderByField;
     }
+
+    public void setOrderByField(CountryOrderByField orderByField) {
+        this.orderByField = orderByField;} public boolean needOrdering() {
+        return super.needOrdering() && orderByField != null;
+
+
+}
 }

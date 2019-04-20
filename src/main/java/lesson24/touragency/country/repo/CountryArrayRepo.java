@@ -1,17 +1,19 @@
 package lesson24.touragency.country.repo;//package lesson10v2.touragency.country.repo;
 
-import lesson22.touragency.common.business.search.Paginator;
-import lesson22.touragency.common.solution.utils.ArrayUtils;
-import lesson22.touragency.common.solution.utils.CollectionUtils;
-import lesson22.touragency.common.solution.utils.OptionalUtils;
-import lesson22.touragency.country.domain.Country;
-import lesson22.touragency.country.repo.CountryOrderingComponent;
-import lesson22.touragency.country.repo.CountryRepo;
-import lesson22.touragency.country.search.CountrySearchCondition;
-import lesson22.touragency.storage.AtomicSequenceGenerator;
+import lesson24.touragency.common.business.search.Paginator;
+import lesson24.touragency.common.solution.utils.ArrayUtils;
+import lesson24.touragency.common.solution.utils.CollectionUtils;
+import lesson24.touragency.common.solution.utils.OptionalUtils;
+import lesson24.touragency.country.domain.Country;
+import lesson24.touragency.country.repo.CountryOrderingComponent;
+import lesson24.touragency.country.repo.CountryRepo;
+import lesson24.touragency.country.search.CountrySearchCondition;
+import lesson24.touragency.storage.AtomicSequenceGenerator;
 
 import java.util.*;
 import java.util.stream.IntStream;
+
+import static lesson24.touragency.storage.Storage.countriesArray;
 
 public class CountryArrayRepo implements CountryRepo {
     private CountryOrderingComponent orderingComponent = new CountryOrderingComponent();
@@ -20,8 +22,8 @@ public class CountryArrayRepo implements CountryRepo {
     @Override
     public Country add(Country country) {
         if (countryIndex == countriesArray.length - 1) {
-            Country[] newArrMarks = new Country[countriesArray.length * 2];
-            System.arraycopy(countriesArray, 0, newArrMarks, 0, countriesArray.length);
+            Country[] newArrCountries = new Country[countriesArray.length * 2];
+            System.arraycopy(countriesArray, 0, newArrCountries, 0, countriesArray.length);
             countriesArray = newArrCountries;
         }
 
@@ -64,7 +66,7 @@ public class CountryArrayRepo implements CountryRepo {
     }
 
     @Override
-    public List<Country> findAllCountriesFetchingModels() {
+    public List<Country> findAllCountriesFetchingCities() {
         return new ArrayList<>(Arrays.asList(countriesArray));
     }
 

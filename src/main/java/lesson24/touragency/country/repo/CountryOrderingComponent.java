@@ -1,9 +1,9 @@
 package lesson24.touragency.country.repo;
 
-import lesson17.touragency.country.domain.Country;
-import lesson17.touragency.country.repo.CountryComparatorComponent;
-import lesson17.touragency.country.search.CountryOrderByField;
-import lesson17.touragency.country.search.CountrySearchCondition;
+import lesson24.touragency.country.domain.Country;
+import lesson24.touragency.country.repo.CountryComparatorComponent;
+import lesson24.touragency.country.search.CountryOrderByField;
+import lesson24.touragency.country.search.CountrySearchCondition;
 
 import java.util.Comparator;
 import java.util.List;

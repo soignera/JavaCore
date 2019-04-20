@@ -1,22 +1,22 @@
 package lesson24.touragency.country.service;//package lesson10v2.touragency.country.service;
 
 
-import lesson17.touragency.city.domain.City;
-import lesson17.touragency.city.repo.CityRepo;
-import lesson17.touragency.city.service.CityService;
-import lesson17.touragency.common.business.exception.UncheckedException;
-import lesson17.touragency.country.domain.Country;
-import lesson17.touragency.country.exception.DeleteCountryException;
-import lesson17.touragency.country.repo.CountryRepo;
-import lesson17.touragency.country.search.CountrySearchCondition;
-import lesson17.touragency.country.service.CountryService;
-import lesson17.touragency.order.repo.OrderRepo;
+import lesson24.touragency.city.domain.City;
+import lesson24.touragency.city.repo.CityRepo;
+import lesson24.touragency.city.service.CityService;
+import lesson24.touragency.common.business.exception.UncheckedException;
+import lesson24.touragency.country.domain.Country;
+import lesson24.touragency.country.exception.DeleteCountryException;
+import lesson24.touragency.country.repo.CountryRepo;
+import lesson24.touragency.country.search.CountrySearchCondition;
+import lesson24.touragency.country.service.CountryService;
+import lesson24.touragency.order.repo.OrderRepo;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import static lesson17.touragency.country.exception.CountryExceptionMeta.DELETE_COUNTRY_CONSTRAINT_ERROR;
+import static lesson24.touragency.country.exception.CountryExceptionMeta.DELETE_COUNTRY_CONSTRAINT_ERROR;
 
 public class CountryDefaultService implements CountryService {
     private final CountryRepo countryRepo;
@@ -129,6 +129,10 @@ public class CountryDefaultService implements CountryService {
     @Override
     public int countAll() {
         return countryRepo.countAll();
+    }
+    @Override
+    public List<Country> findAllCountriesFetchingCities() {
+        return countryRepo.findAllCountriesFetchingCities();
     }
 }
 

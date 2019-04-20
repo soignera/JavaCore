@@ -1,13 +1,13 @@
 package lesson24.touragency.country.repo;
 
-import lesson17.touragency.country.domain.Country;
-import lesson17.touragency.country.search.CountryOrderByField;
+import lesson24.touragency.country.domain.Country;
+import lesson24.touragency.country.search.CountryOrderByField;
 
 import java.util.*;
 
-import static lesson17.touragency.common.business.repo.CommonComparatorHolder.getComparatorForNullableStrings;
-import static lesson17.touragency.country.search.CountryOrderByField.LANGUAG;
-import static lesson17.touragency.country.search.CountryOrderByField.NAME;
+import static lesson24.touragency.common.business.repo.CommonComparatorHolder.getComparatorForNullableStrings;
+import static lesson24.touragency.country.search.CountryOrderByField.LANGUAG;
+import static lesson24.touragency.country.search.CountryOrderByField.NAME;
 
 public final class CountryComparatorComponent {
     private static final CountryComparatorComponent INSTANCE = new CountryComparatorComponent();

@@ -1,7 +1,7 @@
 package lesson24.touragency.country.domain;
 
-import lesson17.touragency.city.domain.City;
-import lesson17.touragency.common.business.domain.BaseDomain;
+import lesson24.touragency.city.domain.City;
+import lesson24.touragency.common.business.domain.BaseDomain;
 import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.List;

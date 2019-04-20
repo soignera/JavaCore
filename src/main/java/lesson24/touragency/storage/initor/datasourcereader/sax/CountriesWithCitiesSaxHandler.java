@@ -1,10 +1,10 @@
 package lesson24.touragency.storage.initor.datasourcereader.sax;
 
-import lesson17.touragency.city.domain.City;
-import lesson17.touragency.city.domain.CityDiscriminator;
-import lesson17.touragency.city.domain.ColdCity;
-import lesson17.touragency.city.domain.HotCity;
-import lesson17.touragency.country.domain.Country;
+import lesson24.touragency.city.domain.City;
+import lesson24.touragency.city.domain.CityDiscriminator;
+import lesson24.touragency.city.domain.ColdCity;
+import lesson24.touragency.city.domain.HotCity;
+import lesson24.touragency.country.domain.Country;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;

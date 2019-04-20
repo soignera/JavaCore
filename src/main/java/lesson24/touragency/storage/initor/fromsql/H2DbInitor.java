@@ -1,8 +1,7 @@
 package lesson24.touragency.storage.initor.fromsql;
 
-import lesson22.touragency.common.business.database.datasource.HikariCpDataSource;
-import lesson22.touragency.storage.initor.Initor;
-import lesson22.touragency.storage.initor.fromsql.DatabaseConfig;
+import lesson24.touragency.common.business.database.datasource.HikariCpDataSource;
+import lesson24.touragency.storage.initor.Initor;
 import org.apache.commons.collections4.CollectionUtils;
 
 import java.nio.file.Files;
@@ -14,9 +13,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class H2DbInitor implements Initor {
-    private static final String DATABASE_CONFIG_PATH = "lesson22/touragency/database/config/config.properties";
-    private static final String DDL_SCRIPT_PATH = "lesson22/touragency/database/ddl/crerate-schema.sql";
-    private static final String DML_SCRIPT_PATH = "lesson22/touragency/database/dml/init-data.sql";
+    private static final String DATABASE_CONFIG_PATH = "lesson24/touragency/database/config/config.properties";
+    private static final String DDL_SCRIPT_PATH = "lesson24/touragency/database/ddl/crerate-schema.sql";
+    private static final String DML_SCRIPT_PATH = "lesson24/touragency/database/dml/init-data.sql";
 
 
     @Override

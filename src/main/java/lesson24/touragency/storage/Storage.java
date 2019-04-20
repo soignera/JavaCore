@@ -1,9 +1,9 @@
 package lesson24.touragency.storage;
 
-import lesson17.touragency.city.domain.City;
-import lesson17.touragency.country.domain.Country;
-import lesson17.touragency.order.domain.Order;
-import lesson17.touragency.user.domain.User;
+import lesson24.touragency.city.domain.City;
+import lesson24.touragency.country.domain.Country;
+import lesson24.touragency.order.domain.Order;
+import lesson24.touragency.user.domain.User;
 
 import java.util.ArrayList;
 import java.util.List;

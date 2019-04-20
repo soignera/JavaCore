@@ -1,18 +1,18 @@
 package lesson24.touragency.storage.initor;
 
-import lesson22.touragency.country.domain.Country;
-import lesson22.touragency.country.service.CountryService;
-import lesson22.touragency.storage.initor.CountryCityFileParser;
-import lesson22.touragency.storage.initor.checked.CountryCityParseXmlFileException;
-import lesson22.touragency.storage.initor.datasourcereader.CountriesWithCitiesTxtFileParser;
-import lesson22.touragency.storage.initor.datasourcereader.CountriesWithCitiesXmlStaxParser;
-import lesson22.touragency.common.solution.parser.FileParser;
+import lesson24.touragency.country.domain.Country;
+import lesson24.touragency.country.service.CountryService;
+import lesson24.touragency.storage.initor.CountryCityFileParser;
+import lesson24.touragency.storage.initor.checked.CountryCityParseXmlFileException;
+import lesson24.touragency.storage.initor.datasourcereader.CountriesWithCitiesTxtFileParser;
+import lesson24.touragency.storage.initor.datasourcereader.CountriesWithCitiesXmlStaxParser;
+import lesson24.touragency.common.solution.parser.FileParser;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lesson22.touragency.storage.initor.exception.InitDataExceptionMeta.PARSE_COUNTRY_CITY_ERROR;
+import static lesson24.touragency.storage.initor.exception.InitDataExceptionMeta.PARSE_COUNTRY_CITY_ERROR;
 
 public class StorageInitializer {
     private final CountryService countryService;

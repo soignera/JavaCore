@@ -1,6 +1,6 @@
 package lesson24.touragency.common.solution;
 
-import lesson17.touragency.common.business.exception.UncheckedException;
+import lesson24.touragency.common.business.exception.UncheckedException;
 
 import java.util.Collection;
 import java.util.List;

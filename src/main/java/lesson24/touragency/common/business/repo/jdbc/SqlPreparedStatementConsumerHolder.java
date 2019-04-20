@@ -1,5 +1,9 @@
 package lesson24.touragency.common.business.repo.jdbc;
 
+import lesson24.touragency.common.solution.repo.jdbc.PreparedStatementConsumer;
+
+import java.util.List;
+
 public class SqlPreparedStatementConsumerHolder {
     private String sql;
     private List<PreparedStatementConsumer> preparedStatementConsumers;

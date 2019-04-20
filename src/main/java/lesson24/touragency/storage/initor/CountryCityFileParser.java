@@ -1,10 +1,10 @@
 package lesson24.touragency.storage.initor;
 
-import lesson22.touragency.country.domain.Country;
-import lesson22.touragency.storage.initor.StorageInitializer;
-import lesson22.touragency.storage.initor.datasourcereader.CountriesWithCitiesTxtFileParser;
-import lesson22.touragency.storage.initor.datasourcereader.CountriesWithCitiesXmlStaxParser;
-import lesson22.touragency.common.solution.parser.FileParser;
+import lesson24.touragency.country.domain.Country;
+import lesson24.touragency.storage.initor.StorageInitializer;
+import lesson24.touragency.storage.initor.datasourcereader.CountriesWithCitiesTxtFileParser;
+import lesson24.touragency.storage.initor.datasourcereader.CountriesWithCitiesXmlStaxParser;
+import lesson24.touragency.common.solution.parser.FileParser;
 
 import java.io.File;
 import java.util.List;

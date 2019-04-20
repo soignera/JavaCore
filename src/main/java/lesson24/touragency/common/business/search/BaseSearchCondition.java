@@ -1,9 +1,5 @@
 package lesson24.touragency.common.business.search;
 
-import lesson17.touragency.common.business.search.OrderDirection;
-import lesson17.touragency.common.business.search.OrderType;
-import lesson17.touragency.common.business.search.Paginator;
-
 public abstract class BaseSearchCondition<ID> {
     protected ID id;
     protected OrderDirection orderDirection;

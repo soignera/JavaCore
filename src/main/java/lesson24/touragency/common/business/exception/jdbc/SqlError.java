@@ -1,8 +1,8 @@
 package lesson24.touragency.common.business.exception.jdbc;
 
-import lesson22.touragency.common.business.exception.UncheckedException;
+import lesson24.touragency.common.business.exception.UncheckedException;
 
-import static lesson22.touragency.common.business.exception.CommonExceptionMeta.JDBC_SQL_ERROR;
+import static lesson24.touragency.common.business.exception.CommonExceptionMeta.JDBC_SQL_ERROR;
 
 public class SqlError extends UncheckedException {
 

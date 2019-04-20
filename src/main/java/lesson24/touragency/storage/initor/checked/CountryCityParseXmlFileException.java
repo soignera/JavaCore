@@ -1,6 +1,6 @@
 package lesson24.touragency.storage.initor.checked;
 
-import lesson11.touragency.common.business.exception.CheckedException;
+import lesson24.touragency.common.business.exception.CheckedException;
 
 
 public class CountryCityParseXmlFileException extends CheckedException {

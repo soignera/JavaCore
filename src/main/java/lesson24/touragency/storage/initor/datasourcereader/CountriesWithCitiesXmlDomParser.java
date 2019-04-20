@@ -1,12 +1,12 @@
 package lesson24.touragency.storage.initor.datasourcereader;
 
-import lesson17.touragency.city.domain.City;
-import lesson17.touragency.city.domain.CityDiscriminator;
-import lesson17.touragency.city.domain.ColdCity;
-import lesson17.touragency.city.domain.HotCity;
-import lesson17.touragency.common.solution.parser.FileParser;
-import lesson17.touragency.country.domain.Country;
-import lesson17.touragency.storage.initor.checked.InvalidCityDiscriminatorException;
+import lesson24.touragency.city.domain.City;
+import lesson24.touragency.city.domain.CityDiscriminator;
+import lesson24.touragency.city.domain.ColdCity;
+import lesson24.touragency.city.domain.HotCity;
+import lesson24.touragency.common.solution.parser.FileParser;
+import lesson24.touragency.country.domain.Country;
+import lesson24.touragency.storage.initor.checked.InvalidCityDiscriminatorException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -16,8 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Integer.parseInt;
-import static lesson17.touragency.common.solution.xml.XmlDomUtils.*;
-import static lesson17.touragency.storage.initor.exception.InitDataExceptionMeta.PARSE_CITY_DISCRIMINATOR_ERROR;
+import static lesson24.touragency.common.solution.xml.XmlDomUtils.*;
+import static lesson24.touragency.storage.initor.exception.InitDataExceptionMeta.PARSE_CITY_DISCRIMINATOR_ERROR;
 
 public class CountriesWithCitiesXmlDomParser implements FileParser<List<Country>> {
 

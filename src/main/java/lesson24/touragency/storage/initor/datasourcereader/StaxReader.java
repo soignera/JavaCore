@@ -1,6 +1,6 @@
 package lesson24.touragency.storage.initor.datasourcereader;
 
-import lesson17.touragency.common.solution.xml.stax.XmlStaxUtils;
+import lesson24.touragency.common.solution.xml.stax.XmlStaxUtils;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;

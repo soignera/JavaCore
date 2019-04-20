@@ -1,6 +1,6 @@
 package lesson24.touragency.common.business.search;
 
-import lesson17.touragency.common.application.ApplicationConfigurations;
+import lesson24.touragency.common.application.ApplicationConfigurations;
 
 public class Paginator {
     private int limit = ApplicationConfigurations.PAGE_SIZE;

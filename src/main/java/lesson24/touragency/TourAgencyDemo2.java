@@ -1,24 +1,24 @@
 package lesson24.touragency;
 
-import lesson22.touragency.city.domain.City;
-import lesson22.touragency.city.search.CityOrderByField;
-import lesson22.touragency.city.search.CitySearchCondition;
-import lesson22.touragency.city.service.CityService;
-import lesson22.touragency.common.business.application.ServiceSupplier;
-import lesson22.touragency.common.business.application.StorageType;
-import lesson22.touragency.common.business.exception.CheckedException;
-import lesson22.touragency.common.business.search.OrderDirection;
-import lesson22.touragency.common.business.search.OrderType;
-import lesson22.touragency.common.business.search.Paginator;
-import lesson22.touragency.country.domain.Country;
-import lesson22.touragency.country.search.CountrySearchCondition;
-import lesson22.touragency.country.service.CountryService;
-import lesson22.touragency.order.domain.Order;
-import lesson22.touragency.order.service.OrderService;
-import lesson22.touragency.reporting.ReportProvider;
-import lesson22.touragency.storage.initor.StorageInitializer;
-import lesson22.touragency.user.domain.User;
-import lesson22.touragency.user.service.UserService;
+import lesson24.touragency.city.domain.City;
+import lesson24.touragency.city.search.CityOrderByField;
+import lesson24.touragency.city.search.CitySearchCondition;
+import lesson24.touragency.city.service.CityService;
+import lesson24.touragency.common.business.application.ServiceSupplier;
+import lesson24.touragency.common.business.application.StorageType;
+import lesson24.touragency.common.business.exception.CheckedException;
+import lesson24.touragency.common.business.search.OrderDirection;
+import lesson24.touragency.common.business.search.OrderType;
+import lesson24.touragency.common.business.search.Paginator;
+import lesson24.touragency.country.domain.Country;
+import lesson24.touragency.country.search.CountrySearchCondition;
+import lesson24.touragency.country.service.CountryService;
+import lesson24.touragency.order.domain.Order;
+import lesson24.touragency.order.service.OrderService;
+import lesson24.touragency.reporting.ReportProvider;
+import lesson24.touragency.storage.initor.StorageInitializer;
+import lesson24.touragency.user.domain.User;
+import lesson24.touragency.user.service.UserService;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -27,14 +27,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static lesson22.touragency.common.application.ApplicationConfigurations.*;
-import static lesson22.touragency.common.solution.utils.FileUtils.createFileFromResource;
-import static lesson22.touragency.common.solution.utils.RandomUtils.getRandomInt;
+import static lesson24.touragency.common.application.ApplicationConfigurations.*;
+import static lesson24.touragency.common.solution.utils.FileUtils.createFileFromResource;
+import static lesson24.touragency.common.solution.utils.RandomUtils.getRandomInt;
 
 public class TourAgencyDemo2 {
     private static class Application {
+        private static StorageType storageType = StorageType.RELATIONAL_DB;
         static {
-            ServiceSupplier.newInstance(StorageType.MEMORY_COLLECTION);
+            ServiceSupplier.newInstance(storageType);
         }
 
         private CityService cityService = ServiceSupplier.getInstance().getCityService();
@@ -46,7 +47,35 @@ public class TourAgencyDemo2 {
 
         public void fillStorage() {
             insertUsers();
+            if (!StorageType.RELATIONAL_DB.equals(storageType)) {
+                fillStorageIfMemoryStorage();
+            }
             insertOrders();
+        }
+        public void fillStorageIfMemoryStorage() {
+            try {
+                StorageInitializer storageInitor = new StorageInitializer(countryService);
+                List<File> filesWithInitData = null;
+                try {
+                    filesWithInitData = getFilesWithDataToInit();
+                    storageInitor.initStorageWithCountriesAndCities(filesWithInitData, StorageInitializer.DataSourceType.XML_FILE);
+                } catch (CheckedException e) {
+                    System.out.println("ERROR while init storage: " + e.getMessage());
+                    throw e;
+                } catch (Exception e) {
+                    System.out.println("Error: Unknown magic :" + e.getMessage());
+                    throw e;
+                } finally {
+                    if (filesWithInitData != null) {
+                        for (File file : filesWithInitData) {
+                            Files.delete(Paths.get(file.toURI()));
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new RuntimeException("Init data error", e);
+            }
         }
 
         private void insertUsers() {
@@ -176,30 +205,6 @@ public class TourAgencyDemo2 {
         }
 
 
-        public void fillStorage() throws Exception {
-            //addCountries();
-            StorageInitializer storageInitor = new StorageInitializer(countryService);
-            List<File> filesWithInitData = null;
-            try {
-                filesWithInitData = getFilesWithDataToInit();
-                storageInitor.initStorageWithCountriesAndCities(filesWithInitData, StorageInitializer.DataSourceType.XML_FILE);
-            } catch (CheckedException e) {
-                System.out.println("ERROR while init storage: " + e.getMessage());
-                throw e;
-            } catch (Exception e) {
-                System.out.println("Error: Unknown magic :" + e.getMessage());
-                throw e;
-            } finally {
-                if (filesWithInitData != null) {
-                    for (File file : filesWithInitData) {
-                        Files.delete(Paths.get(file.toURI()));
-                    }
-                }
-            }
-            appendOrdersToUsers();
-
-        }
-
         private List<File> getFilesWithDataToInit() throws Exception {
             String files[] = new String[]{INIT_DATA_XML_FILE_PART_1, INIT_DATA_XML_FILE_PART_2};
             List<File> result = new ArrayList<>();
@@ -231,15 +236,6 @@ public class TourAgencyDemo2 {
 
         }
 
-        private Order prepareOrderForUser(User user, List<City> cities) {
-            Order order = new Order();
-            order.setUser(user);
-            City city = cities.get(getRandomInt(0, cities.size() - 1));
-            order.setCity(city);
-
-
-            return order;
-        }
 
         public void printCities() {
             cityService.printAll();

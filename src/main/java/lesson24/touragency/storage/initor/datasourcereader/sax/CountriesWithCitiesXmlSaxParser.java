@@ -1,9 +1,8 @@
 package lesson24.touragency.storage.initor.datasourcereader.sax;
 
-import lesson17.touragency.common.solution.xml.sax.XmlSaxUtils;
-import lesson17.touragency.country.domain.Country;
-import lesson17.touragency.common.solution.parser.FileParser;
-import lesson17.touragency.storage.initor.datasourcereader.sax.CountriesWithCitiesSaxHandler;
+import lesson24.touragency.common.solution.parser.FileParser;
+import lesson24.touragency.common.solution.xml.sax.XmlSaxUtils;
+import lesson24.touragency.country.domain.Country;
 
 import javax.xml.parsers.SAXParser;
 import java.io.File;

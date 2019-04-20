@@ -1,19 +1,19 @@
 package lesson24.touragency.common.business.application;//package lesson8.touragency.common.business.application;
 
 
-import lesson22.touragency.city.repo.CityRepo;
-import lesson22.touragency.city.service.CityDefaultService;
-import lesson22.touragency.city.service.CityService;
-import lesson22.touragency.common.business.application.ServiceFactory;
-import lesson22.touragency.country.service.CountryDefaultService;
-import lesson22.touragency.country.service.CountryService;
-import lesson22.touragency.order.repo.OrderRepo;
-import lesson22.touragency.order.service.OrderDefaultService;
-import lesson22.touragency.order.service.OrderService;
-import lesson22.touragency.user.repo.UserRepo;
-import lesson22.touragency.user.service.UserDefaultService;
-import lesson22.touragency.user.service.UserService;
-import lesson22.touragency.country.repo.CountryRepo;
+import lesson24.touragency.city.repo.CityRepo;
+import lesson24.touragency.city.service.CityDefaultService;
+import lesson24.touragency.city.service.CityService;
+import lesson24.touragency.country.repo.CountryArrayRepo;
+import lesson24.touragency.country.repo.CountryRepo;
+import lesson24.touragency.country.service.CountryDefaultService;
+import lesson24.touragency.country.service.CountryService;
+import lesson24.touragency.order.repo.OrderRepo;
+import lesson24.touragency.order.service.OrderDefaultService;
+import lesson24.touragency.order.service.OrderService;
+import lesson24.touragency.user.repo.UserRepo;
+import lesson24.touragency.user.service.UserDefaultService;
+import lesson24.touragency.user.service.UserService;
 
 public class MemoryArrayServiceFactory implements ServiceFactory {
     private OrderRepo orderRepo = new OrderArrayRepo();

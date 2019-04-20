@@ -1,9 +1,6 @@
 package lesson24.touragency.common.solution.repo.jdbc;
-
-import lesson22.touragency.common.business.database.datasource.HikariCpDataSource;
-import lesson22.touragency.common.solution.repo.jdbc.*;
-import lesson22.touragency.common.solution.repo.jdbc.JdbcSupplier;
-import lesson22.touragency.common.solution.utils.CollectionUtils;
+import lesson24.touragency.common.business.database.datasource.HikariCpDataSource;
+import org.apache.commons.collections4.CollectionUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -76,7 +73,7 @@ public class QueryWrapper {
     }
 
     public static <T> List<T> select(String sql, Connection connection, ResultSetExtractor<T> mapper, PreparedStatementConsumer psConsumer) throws Exception {
-        lesson22.touragency.common.solution.repo.jdbc.JdbcSupplier<PreparedStatement> supplier = () -> {
+        JdbcSupplier<PreparedStatement> supplier = () -> {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             psConsumer.consume(preparedStatement);
             return preparedStatement;
@@ -136,7 +133,7 @@ public class QueryWrapper {
     }
 
     public static <T> Optional<T> selectOne(String sql, Connection connection, ResultSetExtractor<T> extractor, PreparedStatementConsumer consumer) throws Exception {
-        lesson22.touragency.common.solution.repo.jdbc.JdbcSupplier<PreparedStatement> supplier = () -> {
+       JdbcSupplier<PreparedStatement> supplier = () -> {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             consumer.consume(preparedStatement);
             return preparedStatement;

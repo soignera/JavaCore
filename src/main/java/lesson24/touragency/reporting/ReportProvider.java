@@ -1,11 +1,9 @@
 package lesson24.touragency.reporting;
 
-import lesson17.touragency.city.service.CityService;
-import lesson17.touragency.country.service.CountryService;
-import lesson17.touragency.order.service.OrderService;
-import lesson17.touragency.reporting.ReportComponent;
-import lesson17.touragency.reporting.UserOrdersIoTextFileReport;
-import lesson17.touragency.user.service.UserService;
+import lesson24.touragency.city.service.CityService;
+import lesson24.touragency.country.service.CountryService;
+import lesson24.touragency.order.service.OrderService;
+import lesson24.touragency.user.service.UserService;
 
 import java.io.File;
 

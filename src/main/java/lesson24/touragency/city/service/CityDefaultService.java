@@ -1,19 +1,23 @@
 package lesson24.touragency.city.service;
 
 
-
-import lesson17.touragency.city.domain.City;
-import lesson17.touragency.city.repo.CityRepo;
-import lesson17.touragency.city.search.CitySearchCondition;
-import lesson17.touragency.city.service.CityService;
-import lesson17.touragency.order.repo.OrderRepo;
+import lesson24.touragency.city.domain.City;
+import lesson24.touragency.city.exception.unchecked.DeleteCityException;
+import lesson24.touragency.city.repo.CityRepo;
+import lesson24.touragency.city.search.CitySearchCondition;
+import lesson24.touragency.common.business.exception.UncheckedException;
+import lesson24.touragency.order.repo.OrderRepo;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+
+import static lesson24.touragency.city.exception.CityExceptionMeta.DELETE_CITY_CONSTRAINT_ERROR;
 
 
 public class CityDefaultService implements CityService {
-    private CityRepo cityRepo;
+    private final CityRepo cityRepo;
     //private static CityService cityServiceInstance;
     private final OrderRepo orderRepo;
 
@@ -49,11 +53,11 @@ public void add(Collection<City> cities) {
 
 
     @Override
-    public City findById(Long id) {
+    public Optional<City> findById(Long id) {
         if (id != null) {
             return cityRepo.findById(id);
         } else {
-            return null;
+            return Optional.empty();
         }
     }
 
@@ -65,14 +69,25 @@ public void add(Collection<City> cities) {
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void deleteById(Long id) throws UncheckedException {
         if (id != null) {
-            cityRepo.deleteById(id);
+
+            boolean noOrders = orderRepo.countByCity(id) == 0;
+            if (noOrders) {
+                cityRepo.deleteById(id);
+            } else {
+                throw new DeleteCityException(DELETE_CITY_CONSTRAINT_ERROR);
+            }
+
         }
     }
     @Override
     public List<? extends City> search(CitySearchCondition searchCondition) {
-        return cityRepo.search(searchCondition);
+        if (searchCondition.getId() != null) {
+            return cityRepo.findById(searchCondition.getId()).map(Collections::singletonList).orElse(Collections.emptyList());
+        } else {
+            return cityRepo.search(searchCondition);
+        }
 
     }
 
@@ -86,6 +101,7 @@ public void add(Collection<City> cities) {
             cityRepo.update(city);
         }
     }
+
     @Override
     public List<City> findAll() {
         return cityRepo.findAll();
@@ -94,5 +110,11 @@ public void add(Collection<City> cities) {
     public int countAll() {
         return cityRepo.countAll();
     }
-
+    @Override
+    public List<City> getCitiesByCountryId(Long markId) {
+        if (markId != null) {
+            return cityRepo.getCitiesByCountryId(markId);
+        }
+        return Collections.emptyList();
+    }
 }

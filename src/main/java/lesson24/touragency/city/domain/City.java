@@ -1,10 +1,8 @@
 package lesson24.touragency.city.domain;
 
-import lesson17.touragency.city.domain.CityDiscriminator;
-import lesson17.touragency.city.domain.Climate;
-import lesson17.touragency.common.business.domain.BaseDomain;
+import lesson24.touragency.common.business.domain.BaseDomain;
 
-public abstract class City extends BaseDomain implements Comparable<City>
+public abstract class City extends BaseDomain<Long>
 {
 
         //private Long id;
@@ -84,8 +82,4 @@ public abstract class City extends BaseDomain implements Comparable<City>
         return discriminator;
     }
 
-    @Override
-    public int compareTo(City o) {
-        return Integer.compare(this.id.intValue(),o.id.intValue());
-    }
 }

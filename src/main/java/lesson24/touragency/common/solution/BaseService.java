@@ -4,6 +4,7 @@ import lesson24.touragency.common.business.exception.UncheckedException;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 public interface BaseService<TYPE,ID> {
     TYPE add(TYPE entity);
@@ -11,7 +12,7 @@ public interface BaseService<TYPE,ID> {
 
     void update(TYPE entity);
 
-    TYPE findById(ID id);
+    Optional<TYPE> findById(ID id);
 
     void deleteById(ID id) throws UncheckedException;
 

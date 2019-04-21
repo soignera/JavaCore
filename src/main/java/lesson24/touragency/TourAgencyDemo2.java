@@ -1,7 +1,6 @@
 package lesson24.touragency;
 
 import lesson24.touragency.city.domain.City;
-import lesson24.touragency.city.search.CityOrderByField;
 import lesson24.touragency.city.search.CitySearchCondition;
 import lesson24.touragency.city.service.CityService;
 import lesson24.touragency.common.business.application.ServiceSupplier;
@@ -160,7 +159,6 @@ public class TourAgencyDemo2 {
             System.out.println("\n----------Search countries Order ASC ------------");
             CitySearchCondition citySearchCondition = new CitySearchCondition();
             citySearchCondition.setOrderDirection(OrderDirection.ASC);
-            citySearchCondition.setOrderByField(CityOrderByField.CLIMATE);
             List<? extends City> searchResult = cityService.search(citySearchCondition);
             for (City city : searchResult) {
                 System.out.println(city);
@@ -172,7 +170,6 @@ public class TourAgencyDemo2 {
             System.out.println("\n----------Search countries Order Desc ------------");
             CitySearchCondition citySearchCondition = new CitySearchCondition();
             citySearchCondition.setOrderDirection(OrderDirection.DESC);
-            citySearchCondition.setOrderByField(CityOrderByField.CLIMATE);
             List<? extends City> searchResult = cityService.search(citySearchCondition);
             for (City city : searchResult) {
                 System.out.println(city);
@@ -184,7 +181,6 @@ public class TourAgencyDemo2 {
             System.out.println("\n----------Search countries COMPLEX Order Desc ------------");
             CitySearchCondition citySearchCondition = new CitySearchCondition();
             citySearchCondition.setOrderDirection(OrderDirection.ASC);
-            citySearchCondition.setOrderByField(CityOrderByField.CLIMATE);
             citySearchCondition.setOrderType(OrderType.COMPLEX);
             List<? extends City> searchResult = cityService.search(citySearchCondition);
             for (City city : searchResult) {
@@ -196,7 +192,6 @@ public class TourAgencyDemo2 {
             System.out.println("\n----------Search countries COMPLEX Order Desc ------------");
             CitySearchCondition citySearchCondition = new CitySearchCondition();
             citySearchCondition.setOrderDirection(OrderDirection.DESC);
-            citySearchCondition.setOrderByField(CityOrderByField.CLIMATE);
             citySearchCondition.setOrderType(OrderType.COMPLEX);
             List<? extends City> searchResult = cityService.search(citySearchCondition);
             for (City city : searchResult) {

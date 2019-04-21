@@ -1,44 +1,17 @@
 package lesson24.touragency.city.search;
 
-import lesson17.touragency.city.search.CityOrderByField;
-import lesson17.touragency.common.business.search.BaseSearchCondition;
+import lesson24.touragency.city.domain.CityDiscriminator;
+import lesson24.touragency.common.business.search.BaseSearchCondition;
 
 public class CitySearchCondition extends BaseSearchCondition<Long> {
-    private String name;
+    private CityDiscriminator cityDiscriminator;
 
-    public CityOrderByField getOrderByField() {
-        return orderByField;
+    public CityDiscriminator getCityDiscriminator() {
+        return cityDiscriminator;
     }
 
-    public void setOrderByField(CityOrderByField orderByField) {
-        this.orderByField = orderByField;
-    }
-
-    private CityOrderByField orderByField;
-
-    private String climate;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getClimate() {
-        return climate;
-    }
-
-    public void setClimate(String climate) {
-        this.climate = climate;
-    }
-    public boolean needSearchByClimate(){
-        return true;
-    }
-
-    public boolean isNameLengthGeThan6Chars(){
-        return true;
+    public void setCityDiscriminator(CityDiscriminator cityDiscriminator) {
+        this.cityDiscriminator = cityDiscriminator;
     }
 }
 

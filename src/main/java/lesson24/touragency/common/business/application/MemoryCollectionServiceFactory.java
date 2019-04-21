@@ -1,10 +1,9 @@
 package lesson24.touragency.common.business.application;
 
-import lesson24.touragency.city.repo.CityMemoryCollectionRepo;
+import lesson24.touragency.city.repo.CityCollectionRepo;
 import lesson24.touragency.city.repo.CityRepo;
 import lesson24.touragency.city.service.CityDefaultService;
 import lesson24.touragency.city.service.CityService;
-import lesson24.touragency.common.business.application.ServiceFactory;
 import lesson24.touragency.country.repo.CountryCollectionRepo;
 import lesson24.touragency.country.repo.CountryRepo;
 import lesson24.touragency.country.service.CountryDefaultService;
@@ -20,7 +19,7 @@ import lesson24.touragency.user.service.UserService;
 
 public class MemoryCollectionServiceFactory implements ServiceFactory {
     private OrderRepo orderRepo = new OrderCollectionRepo();
-    private CityRepo cityRepo = new CityMemoryCollectionRepo();
+    private CityRepo cityRepo = new CityCollectionRepo();
     private CountryRepo countryRepo = new CountryCollectionRepo();
     private UserRepo userRepo = new UserCollectionRepo();
 

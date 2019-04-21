@@ -1,6 +1,9 @@
 package lesson24.touragency.country.dto;
 
 import lesson22.touragency.common.business.dto.BaseDto;
+import lesson24.touragency.city.dto.CityDto;
+
+import java.util.List;
 
 public class CountryDto extends BaseDto<Long> { private String name;
     private String languag;
@@ -33,11 +36,5 @@ public class CountryDto extends BaseDto<Long> { private String name;
         this.languag = languag;
     }
 
-    public List<CityDto> getModels() {
-        return cities;
-    }
 
-    public void setModels(List<CityDto> models) {
-        this.cities = cities;
-    }
 }

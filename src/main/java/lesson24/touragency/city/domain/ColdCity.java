@@ -1,8 +1,5 @@
 package lesson24.touragency.city.domain;
 
-import lesson17.touragency.city.domain.City;
-import lesson17.touragency.city.domain.CityDiscriminator;
-
 public class ColdCity extends City {
     private String coldestMonth;
     private int coldestTemp;

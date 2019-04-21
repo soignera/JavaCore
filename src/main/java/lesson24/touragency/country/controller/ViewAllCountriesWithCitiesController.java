@@ -15,7 +15,7 @@ import java.util.List;
 
 import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
 
-@WebServlet(name = "ViewAllMarks", urlPatterns = "/marks")
+@WebServlet(name = "ViewAllCountries", urlPatterns = "/countries")
 public class ViewAllCountriesWithCitiesController extends BaseController {
     private CountryService countryService = ServiceSupplier.getInstance().getCountryService();
 

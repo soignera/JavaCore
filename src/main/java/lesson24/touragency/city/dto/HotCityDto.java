@@ -1,9 +1,18 @@
-package lesson24.touragency.city.domain;
+package lesson24.touragency.city.dto;
 
-public class HotCity extends City {
+import lesson24.touragency.city.domain.CityDiscriminator;
+
+public class HotCityDto extends  CityDto {
     private String hottestMonth;
     private int hottestTemp;
 
+    @Override
+    public String toString() {
+        return "HotCityDto{" +
+                "hottestMonth='" + hottestMonth + '\'' +
+                ", hottestTemp=" + hottestTemp +
+                '}';
+    }
 
     public String getHottestMonth() {
         return hottestMonth;
@@ -23,6 +32,7 @@ public class HotCity extends City {
 
     @Override
     protected void initDiscriminator() {
-        discriminator = CityDiscriminator.COLD;
+        discriminator = CityDiscriminator.HOT;
     }
+
 }

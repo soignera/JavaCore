@@ -279,7 +279,7 @@ public class CountryDefaultRepoImpl implements CountryRepo {
     private Country getCountryForFindAllCountriesFetchingCitiesQuery(ResultSet rs, long countryId) throws SQLException{
         Country country = CountryMapper.mapCountry(rs);
         country.setId(countryId);
-        country.setName(rs.getString("MARK_NAME"));
+        country.setName(rs.getString("COUNTRY_NAME"));
         return country;
     }
 

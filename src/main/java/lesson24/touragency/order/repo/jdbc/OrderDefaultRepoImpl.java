@@ -15,6 +15,7 @@ import lesson24.touragency.order.domain.Order;
 import lesson24.touragency.order.repo.OrderRepo;
 import lesson24.touragency.order.search.OrderSearchCondition;
 import lesson24.touragency.user.domain.User;
+import lesson24.touragency.user.repo.jdbc.UserMapper;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,8 +1,8 @@
 package lesson24.touragency.user.search;
 
-import lesson17.touragency.common.business.search.BaseSearchCondition;
+import lesson24.touragency.common.business.search.BaseSearchCondition;
 
-public class UserSearchCondition extends BaseSearchCondition {
+public class UserSearchCondition extends BaseSearchCondition<Long> {
 //    private String name;
 //    private String lastname;
 //

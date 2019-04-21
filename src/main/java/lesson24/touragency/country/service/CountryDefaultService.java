@@ -9,12 +9,11 @@ import lesson24.touragency.country.domain.Country;
 import lesson24.touragency.country.exception.DeleteCountryException;
 import lesson24.touragency.country.repo.CountryRepo;
 import lesson24.touragency.country.search.CountrySearchCondition;
-import lesson24.touragency.country.service.CountryService;
 import lesson24.touragency.order.repo.OrderRepo;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import static lesson24.touragency.country.exception.CountryExceptionMeta.DELETE_COUNTRY_CONSTRAINT_ERROR;
 
@@ -64,11 +63,11 @@ public class CountryDefaultService implements CountryService {
     }
 
     @Override
-    public Country findById(Long id) {
+    public Optional<Country> findById(Long id) {
         if (id != null) {
             return countryRepo.findById(id);
         } else {
-            return null;
+            return Optional.empty();
         }
     }
 
@@ -105,15 +104,11 @@ public class CountryDefaultService implements CountryService {
     }
     @Override
     public void removeAllCitiesFromCountry(Long countryId) throws UncheckedException {
-       Country country = findById(countryId);
-        if (country != null) {
-            List<City> cities = country.getCities() == null ? Collections.emptyList() : country.getCities();
-
-            for (City city : cities) {
-                cityService.deleteById(city.getId());
+        findById(countryId).ifPresent(mark -> {
+            if (mark.getCities() != null) {
+                mark.getCities().forEach(city -> cityService.deleteById(city.getId()));
             }
-
-        }
+        });
     }
 
     @Override

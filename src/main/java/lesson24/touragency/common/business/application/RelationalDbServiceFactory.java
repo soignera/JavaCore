@@ -9,9 +9,11 @@ import lesson24.touragency.country.repo.jdbc.CountryDefaultRepoImpl;
 import lesson24.touragency.country.service.CountryDefaultService;
 import lesson24.touragency.country.service.CountryService;
 import lesson24.touragency.order.repo.OrderRepo;
+import lesson24.touragency.order.repo.jdbc.OrderDefaultRepoImpl;
 import lesson24.touragency.order.service.OrderDefaultService;
 import lesson24.touragency.order.service.OrderService;
 import lesson24.touragency.user.repo.UserRepo;
+import lesson24.touragency.user.repo.jdbc.UserDefaultRepoImpl;
 import lesson24.touragency.user.service.UserDefaultService;
 import lesson24.touragency.user.service.UserService;
 

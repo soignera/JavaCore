@@ -3,6 +3,7 @@ package lesson24.touragency.order.dto;
 import lesson24.touragency.city.dto.CityDtoConverter;
 import lesson24.touragency.country.dto.CountryDtoConverter;
 import lesson24.touragency.order.domain.Order;
+import lesson24.touragency.user.dto.UserDtoConverter;
 
 import java.util.Collection;
 import java.util.List;

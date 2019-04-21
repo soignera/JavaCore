@@ -2,12 +2,12 @@ package lesson24.touragency.order.dto;
 
 import lesson24.touragency.city.dto.CityDto;
 import lesson24.touragency.common.business.dto.BaseDto;
-import lesson24.touragency.country.domain.Country;
 import lesson24.touragency.country.dto.CountryDto;
+import lesson24.touragency.user.dto.UserDto;
 
 public class OrderDto extends BaseDto<Long> {
-    private CountryDto countryDto;
-    private CityDto cityDto;
+    private CountryDto country;
+    private CityDto city;
     private UserDto user;
     private String description;
     private int price;
@@ -15,20 +15,20 @@ public class OrderDto extends BaseDto<Long> {
     public OrderDto() {
     }
 
-    public CountryDto getCountryDto() {
-        return countryDto;
+    public CountryDto getCountry() {
+        return country;
     }
 
-    public void setCountryDto(CountryDto countryDto) {
-        this.countryDto = countryDto;
+    public void setCountry(CountryDto country) {
+        this.country = country;
     }
 
-    public CityDto getCityDto() {
-        return cityDto;
+    public CityDto getCity() {
+        return city;
     }
 
-    public void setCityDto(CityDto cityDto) {
-        this.cityDto = cityDto;
+    public void setCity(CityDto city) {
+        this.city = city;
     }
 
     public UserDto getUser() {

@@ -6,6 +6,7 @@ import lesson24.touragency.country.domain.Country;
 import java.sql.ResultSet;
 
 public final class CountryMapper {
+    private static final String COUNTRY_CLASS_NAME = Country.class.getSimpleName();
 
     private CountryMapper() {
     }

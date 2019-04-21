@@ -1,16 +1,17 @@
 package lesson24.touragency.user.repo;
 
 
-import lesson17.touragency.storage.AtomicSequenceGenerator;
-import lesson17.touragency.user.domain.User;
-import lesson17.touragency.user.repo.UserRepo;
-import lesson17.touragency.user.search.UserSearchCondition;
+import lesson24.touragency.common.business.search.Paginator;
+import lesson24.touragency.common.solution.utils.CollectionUtils;
+import lesson24.touragency.storage.AtomicSequenceGenerator;
+import lesson24.touragency.user.domain.User;
+import lesson24.touragency.user.search.UserSearchCondition;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
-import static lesson17.touragency.storage.Storage.usersList;
+import static lesson24.touragency.storage.Storage.usersList;
 
 public class UserCollectionRepo implements UserRepo {
 
@@ -35,39 +36,43 @@ public class UserCollectionRepo implements UserRepo {
     }
 
     @Override
-    public User findById(Long id) {
+    public Optional<User> findById(Long id) {
         return findUserById(id);
     }
 
     @Override
-    public List<User> search(UserSearchCondition searchCondition) {
-        return Collections.emptyList();
+    public List<? extends User> search(UserSearchCondition searchCondition) {
+        List<? extends User> users = doSearch(searchCondition);
+
+        if (!users.isEmpty() && searchCondition.shouldPaginate()) {
+            users = getPageableData(users, searchCondition.getPaginator());
+        }
+
+        return users;
+    }
+    private List<? extends User> getPageableData(List<? extends User> users, Paginator paginator) {
+        return CollectionUtils.getPageableData(users, paginator.getLimit(), paginator.getOffset());
     }
 
+    private List<User> doSearch(UserSearchCondition searchCondition) {
+        return usersList;
+    }
     @Override
     public void deleteById(Long id) {
-        User found = findUserById(id);
+        findUserById(id).map(user -> usersList.remove(user));
 
-        if (found != null) {
-            usersList.remove(found);
-        }
     }
 
     @Override
     public void printAll() {
-        for (User user : usersList) {
-            System.out.println(user);
-        }
+        usersList.forEach(System.out::println);
+
     }
 
-    private User findUserById(long userId) {
-        for (User user : usersList) {
-            if (Long.valueOf(userId).equals(user.getId())) {
-                return user;
-            }
-        }
-        return null;
+    private Optional<User> findUserById(long userId) {
+        return usersList.stream().filter(user -> Long.valueOf(userId).equals(user.getId())).findAny();
     }
+
 
     @Override
     public List<User> findAll() {

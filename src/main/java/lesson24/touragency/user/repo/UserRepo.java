@@ -1,11 +1,12 @@
 package lesson24.touragency.user.repo;//package lesson10v2.touragency.user.repo;
 
-import lesson17.touragency.common.solution.BaseRepo;
-import lesson17.touragency.user.domain.User;
-import lesson17.touragency.user.search.UserSearchCondition;
+
+import lesson24.touragency.common.solution.repo.BaseRepo;
+import lesson24.touragency.user.domain.User;
+import lesson24.touragency.user.search.UserSearchCondition;
 
 import java.util.List;
 
 public interface UserRepo extends BaseRepo<User, Long> {
-    List<User> search(UserSearchCondition searchCondition);
+    List<? extends User> search(UserSearchCondition searchCondition);
 }

@@ -1,14 +1,18 @@
 package lesson24.touragency.user.service;
 
 
-import lesson17.touragency.order.service.OrderService;
-import lesson17.touragency.user.domain.User;
-import lesson17.touragency.user.repo.UserRepo;
-import lesson17.touragency.user.search.UserSearchCondition;
-import lesson17.touragency.user.service.UserService;
+import lesson24.touragency.order.service.OrderService;
+import lesson24.touragency.user.domain.User;
+import lesson24.touragency.user.repo.UserRepo;
+import lesson24.touragency.user.search.UserSearchCondition;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+
+import static java.util.Collections.emptyList;
+import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
 
 public class UserDefaultService implements UserService {
     private final UserRepo userRepo;
@@ -31,16 +35,16 @@ public class UserDefaultService implements UserService {
 
     @Override
     public void add(Collection<User> users) {
-        if (users != null && !users.isEmpty()) {
+        if (isNotEmpty(users)) {
             userRepo.add(users);
         }
     }
     @Override
-    public User findById(Long id) {
+    public Optional<User> findById(Long id) {
         if (id != null) {
             return userRepo.findById(id);
         } else {
-            return null;
+            return Optional.empty();
         }
     }
 
@@ -54,9 +58,12 @@ public class UserDefaultService implements UserService {
 
 
     @Override
-    public List<User> search(UserSearchCondition searchCondition) {
-        return userRepo.search(searchCondition);
-
+    public List<? extends User> search(UserSearchCondition searchCondition) {
+        if (searchCondition.getId() != null) {
+            return userRepo.findById(searchCondition.getId()).map(Collections::singletonList).orElse(emptyList());
+        } else {
+            return userRepo.search(searchCondition);
+        }
     }
 
     @Override

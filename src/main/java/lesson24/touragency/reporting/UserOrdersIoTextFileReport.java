@@ -73,7 +73,7 @@ public class UserOrdersIoTextFileReport implements ReportComponent {
         StringBuilder userAsStr = new StringBuilder();
 
         userAsStr.append("User:").append(LINE_SEPARATOR)
-                .append("Full name: ").append(user.getName()).append(" ").append(user.getLastName());
+                .append("Full name: ").append(user.getFirstName()).append(" ").append(user.getLastName());
 
         return userAsStr.toString();
     }

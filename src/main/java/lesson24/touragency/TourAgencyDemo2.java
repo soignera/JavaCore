@@ -79,7 +79,7 @@ public class TourAgencyDemo2 {
 
         private void insertUsers() {
             //List<City> listCitites= new ArrayList<>();
-            userService.add(new User("123", "123",1));
+            //userService.add(new User("123", "123",1));
             countryService.add(new Country("123", "123"));
             countryService.add(new Country("123", "123"));
 

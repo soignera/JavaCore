@@ -1,16 +1,18 @@
 package lesson24.touragency.order.repo;
 
-import lesson17.touragency.order.domain.Order;
-import lesson17.touragency.order.repo.OrderRepo;
-import lesson17.touragency.order.search.OrderSearchCondition;
-import lesson17.touragency.storage.AtomicSequenceGenerator;
+import lesson24.touragency.common.business.search.Paginator;
+import lesson24.touragency.common.solution.utils.CollectionUtils;
+import lesson24.touragency.order.domain.Order;
+import lesson24.touragency.order.search.OrderSearchCondition;
+import lesson24.touragency.storage.AtomicSequenceGenerator;
 
-import java.util.ArrayList;
+import java.sql.Connection;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
-import static lesson17.touragency.storage.Storage.ordersList;
+import static java.util.stream.Collectors.toList;
+import static lesson24.touragency.storage.Storage.ordersList;
 
 public class OrderCollectionRepo implements OrderRepo {
     @Override
@@ -23,9 +25,8 @@ public class OrderCollectionRepo implements OrderRepo {
 
     @Override
     public void add(Collection<Order> orders) {
-        for (Order order : orders) {
-            add(order);
-        }
+        orders.forEach(this::add);
+
     }
 
     @Override
@@ -34,60 +35,56 @@ public class OrderCollectionRepo implements OrderRepo {
     }
 
     @Override
-    public Order findById(Long id) {
+    public Optional<Order> findById(Long id) {
         return findOrderById(id);
     }
 
     @Override
     public List<Order> search(OrderSearchCondition searchCondition) {
-        return Collections.emptyList();
-    }
+        List<Order> orders = doSearch(searchCondition);
 
+        if (!orders.isEmpty() && searchCondition.shouldPaginate()) {
+            orders = getPageableData(orders, searchCondition.getPaginator());
+        }
+
+        return orders;
+    } private List<Order> getPageableData(List<Order> orders, Paginator paginator) {
+        return CollectionUtils.getPageableData(orders, paginator.getLimit(), paginator.getOffset());
+    }
+    private List<Order> doSearch(OrderSearchCondition searchCondition) {
+        return ordersList;
+    }
+    @Override
+    public Optional<Order> getFullOrder(long id) {
+        return findOrderById(id);
+    }
     @Override
     public void deleteById(Long id) {
-        Order found = findOrderById(id);
+        findOrderById(id).map(order -> ordersList.remove(order));
 
-        if (found != null) {
-            ordersList.remove(found);
-        }
     }
 
     @Override
     public void printAll() {
-        for (Order order : ordersList) {
-            System.out.println(order);
-        }
+        ordersList.forEach(System.out::println);
+
     }
 
-    private Order findOrderById(long orderId) {
-        for (Order order : ordersList) {
-            if (Long.valueOf(orderId).equals(order.getId())) {
-                return order;
-            }
-        }
-        return null;
+    private Optional<Order> findOrderById(long orderId) {
+        return ordersList.stream().filter(order -> Long.valueOf(orderId).equals(order.getId())).findAny();
+
     }
 
     @Override
     public int countByCity(long cityId) {
-        int count = 0;
-        for (Order order : ordersList) {
-            if (cityId == order.getCity().getId()) {
-                count++;
-            }
-        }
-        return count;
+        return (int) ordersList.stream().filter(order -> cityId == order.getCity().getId()).count();
+
     }
 
     @Override
     public int countByCountry(long countryId) {
-        int count = 0;
-        for (Order order : ordersList) {
-            if (countryId == order.getCountry().getId()) {
-                count++;
-            }
-        }
-        return count;
+        return (int) ordersList.stream().filter(order -> countryId == order.getCountry().getId()).count();
+
     }
 
     @Override
@@ -101,16 +98,19 @@ public class OrderCollectionRepo implements OrderRepo {
 
     @Override
     public List<Order> findByUserId(long userId) {
-        List<Order> foundOrders = new ArrayList<>();
+        return ordersList.stream().filter(order -> order.getUser().getId().equals(userId)).collect(toList());
 
-        for (Order order : ordersList) {
-            if (order.getUser().getId().equals(userId)) {
-                foundOrders.add(order);
-            }
-        }
-
-        return foundOrders;
     }
+    @Override
+    public void deleteByIdTx(long id, Connection connection) {
+        deleteById(id);
+    }
+
+    @Override
+    public Order insertTx(Order order, Connection connection) {
+        return add(order);
+    }
+
     @Override
     public int countAll() {
         return ordersList.size();

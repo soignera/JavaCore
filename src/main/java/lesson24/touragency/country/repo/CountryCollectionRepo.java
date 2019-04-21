@@ -1,15 +1,10 @@
 package lesson24.touragency.country.repo;
 
 import lesson24.touragency.country.domain.Country;
-import lesson24.touragency.country.repo.CountryOrderingComponent;
-import lesson24.touragency.country.repo.CountryRepo;
 import lesson24.touragency.country.search.CountrySearchCondition;
 import lesson24.touragency.storage.AtomicSequenceGenerator;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static lesson24.touragency.storage.Storage.countriesList;
 
@@ -35,7 +30,7 @@ public class CountryCollectionRepo implements CountryRepo {
     }
 
     @Override
-    public Country findById(Long id) {
+    public Optional<Country> findById(Long id) {
         return findCountryById(id);
     }
 

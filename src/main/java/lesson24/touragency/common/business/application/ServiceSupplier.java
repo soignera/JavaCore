@@ -14,7 +14,7 @@ public final class ServiceSupplier {
         return INSTANCE;
     }
 
-    public static ServiceSupplier newInstance(lesson22.touragency.common.business.application.StorageType storageType) {
+    public static ServiceSupplier newInstance(StorageType storageType) {
 
         if (INSTANCE == null) {
             synchronized (ServiceSupplier.class) {

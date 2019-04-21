@@ -1,9 +1,8 @@
-package lesson24.touragency.order.service;//package lesson10v2.touragency.order.service;
+package lesson24.touragency.order.service;
+
 
 import lesson24.touragency.city.domain.City;
 import lesson24.touragency.city.repo.CityRepo;
-import lesson24.touragency.common.business.database.datasource.HikariCpDataSource;
-import lesson24.touragency.common.business.exception.jdbc.SqlError;
 import lesson24.touragency.country.domain.Country;
 import lesson24.touragency.country.repo.CountryRepo;
 import lesson24.touragency.order.domain.Order;
@@ -13,8 +12,6 @@ import lesson24.touragency.user.domain.User;
 import lesson24.touragency.user.repo.UserRepo;
 import org.apache.commons.collections4.CollectionUtils;
 
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -23,13 +20,16 @@ import java.util.Optional;
 import static java.util.Collections.emptyList;
 import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
 
-public class OrderDefaultService implements OrderService {
+public class OrderMemoryService implements OrderService {
+
     private final OrderRepo orderRepo;
     private final CountryRepo countryRepo;
     private final CityRepo cityRepo;
     private final UserRepo userRepo;
 
-    public OrderDefaultService(OrderRepo orderRepo, CountryRepo countryRepo, CityRepo cityRepo, UserRepo userRepo) {
+    public OrderMemoryService(OrderRepo orderRepo,
+                              CountryRepo countryRepo, CityRepo cityRepo,
+                              UserRepo userRepo) {
         this.orderRepo = orderRepo;
         this.countryRepo = countryRepo;
         this.cityRepo = cityRepo;
@@ -54,31 +54,8 @@ public class OrderDefaultService implements OrderService {
 
     @Override
     public void update(Order order) {
-        Connection connection = HikariCpDataSource.getInstance().getConnection();
-        try {
-            if (order.getId() != null) {
-                //tx begin
-                connection.setAutoCommit(false);
-                orderRepo.deleteByIdTx(order.getId(), connection);
-                orderRepo.insertTx(order, connection);
-                //tx end
-                connection.commit();
-            }
-        } catch (Exception e) {
-            try {
-                //if error rollback
-                connection.rollback();
-            } catch (SQLException e1) {
-                e1.printStackTrace();
-            }
-            throw new SqlError(e);
-        } finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+        orderRepo.deleteById(order.getId());
+        orderRepo.add(order);
     }
 
     @Override
@@ -89,6 +66,7 @@ public class OrderDefaultService implements OrderService {
             return Optional.empty();
         }
     }
+
     @Override
     public Optional<Order> getFullOrder(Long id) {
         if (id != null) {
@@ -97,6 +75,7 @@ public class OrderDefaultService implements OrderService {
             return Optional.empty();
         }
     }
+
     @Override
     public void delete(Order order) {
         if (order.getId() != null) {
@@ -106,20 +85,20 @@ public class OrderDefaultService implements OrderService {
 
     @Override
     public List<Order> search(OrderSearchCondition searchCondition) {
-          List<Order> orders;
+        List<Order> orders;
         if (searchCondition.getId() != null) {
             orders = orderRepo.findById(searchCondition.getId()).map(Collections::singletonList).orElse(emptyList());
         } else {
             orders = orderRepo.search(searchCondition);
-
-    }
+        }
 
         if (CollectionUtils.isNotEmpty(orders)) {
-        orders.forEach(this::fillOrderWithDetailedData);
-    }
+            orders.forEach(this::fillOrderWithDetailedData);
+        }
 
         return orders;
-}
+    }
+
     @Override
     public void deleteById(Long id) {
         if (id != null) {
@@ -139,6 +118,10 @@ public class OrderDefaultService implements OrderService {
         orderRepo.printAll();
     }
 
+    @Override
+    public List<Order> findAll() {
+        return orderRepo.findAll();
+    }
 
     @Override
     public List<Order> getOrdersByUser(Long userId) {
@@ -148,10 +131,12 @@ public class OrderDefaultService implements OrderService {
 
         return emptyList();
     }
+
     @Override
-    public List<Order> findAll() {
-        return orderRepo.findAll();
+    public int countAll() {
+        return orderRepo.countAll();
     }
+
     @Override
     public List<Order> getAllOrdersWithFilledData() {
         List<Order> orders = findAll();
@@ -183,9 +168,7 @@ public class OrderDefaultService implements OrderService {
         }
         order.setUser(user.get());
     }
-    @Override
-    public int countAll() {
-        return orderRepo.countAll();
-    }
 }
+
+
 

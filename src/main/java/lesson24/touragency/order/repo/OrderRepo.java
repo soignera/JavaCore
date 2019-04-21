@@ -1,11 +1,13 @@
 package lesson24.touragency.order.repo;
 
 
-import lesson17.touragency.common.solution.BaseRepo;
-import lesson17.touragency.order.domain.Order;
-import lesson17.touragency.order.search.OrderSearchCondition;
+import lesson24.touragency.common.solution.repo.BaseRepo;
+import lesson24.touragency.order.domain.Order;
+import lesson24.touragency.order.search.OrderSearchCondition;
 
+import java.sql.Connection;
 import java.util.List;
+import java.util.Optional;
 
 public interface OrderRepo extends BaseRepo<Order, Long> {
     List<Order> search(OrderSearchCondition searchCondition);
@@ -17,4 +19,9 @@ public interface OrderRepo extends BaseRepo<Order, Long> {
     void deleteByUserId(long userId);
 
     List<Order> findByUserId(long userId);
+    void deleteByIdTx(long id, Connection connection);
+
+    Order insertTx(Order order, Connection connection);
+
+    Optional<Order> getFullOrder(long id);
 }

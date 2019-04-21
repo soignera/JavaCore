@@ -5,8 +5,6 @@ import lesson24.touragency.common.solution.utils.ArrayUtils;
 import lesson24.touragency.common.solution.utils.CollectionUtils;
 import lesson24.touragency.common.solution.utils.OptionalUtils;
 import lesson24.touragency.country.domain.Country;
-import lesson24.touragency.country.repo.CountryOrderingComponent;
-import lesson24.touragency.country.repo.CountryRepo;
 import lesson24.touragency.country.search.CountrySearchCondition;
 import lesson24.touragency.storage.AtomicSequenceGenerator;
 
@@ -71,7 +69,7 @@ public class CountryArrayRepo implements CountryRepo {
     }
 
     private List<Country> doSearch(CountrySearchCondition searchCondition) {
-        Country[] result = new Country[][countriesArray.length];
+        Country[] result = new Country[countriesArray.length];
         int resultIndex = 0;
 
         for (Country country : countriesArray) {

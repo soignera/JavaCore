@@ -1,47 +1,48 @@
 package lesson24.touragency.user.domain;
 
-import lesson17.touragency.common.business.domain.BaseDomain;
-import lesson17.touragency.order.domain.Order;
+import lesson24.touragency.common.business.domain.BaseDomain;
 
 public class User extends BaseDomain<Long> {
-    private Long id;
-    private String name;
+    private String firstName;
     private String lastName;
     private int passportNumber;
-    private Order[] orders;
+    private ClientType clientType = ClientType.NEW;
 
-    public User(String name, String lastName, int passportNumber) {
-        this.name = name;
+    public User() {
+    }
+
+    public User(Long id) {
+        this.id = id;
+    }
+
+    public User(String firstName, String lastName, int passportNumber) {
+        this.firstName = firstName;
         this.lastName = lastName;
         this.passportNumber = passportNumber;
     }
 
-    public User() {
+    public User(Long id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "name='" + name + '\'' +
+                "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", passportNumber=" + passportNumber +
+                ", clientType=" + clientType +
                 '}';
     }
 
-    public Long getId() {
-        return id;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -60,11 +61,11 @@ public class User extends BaseDomain<Long> {
         this.passportNumber = passportNumber;
     }
 
-    public Order[] getOrders() {
-        return orders;
+    public ClientType getClientType() {
+        return clientType;
     }
 
-    public void setOrders(Order[] orders) {
-        this.orders = orders;
+    public void setClientType(ClientType clientType) {
+        this.clientType = clientType;
     }
 }

@@ -1,10 +1,11 @@
 package lesson24.touragency.common.business.application;
 
-import lesson24.touragency.city.service.CityService;
 import lesson24.touragency.city.repo.CityRepo;
+import lesson24.touragency.city.repo.jdbc.CityDefaultRepoImpl;
 import lesson24.touragency.city.service.CityDefaultService;
-import lesson24.touragency.common.business.application.ServiceFactory;
+import lesson24.touragency.city.service.CityService;
 import lesson24.touragency.country.repo.CountryRepo;
+import lesson24.touragency.country.repo.jdbc.CountryDefaultRepoImpl;
 import lesson24.touragency.country.service.CountryDefaultService;
 import lesson24.touragency.country.service.CountryService;
 import lesson24.touragency.order.repo.OrderRepo;

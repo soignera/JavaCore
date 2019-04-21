@@ -1,5 +1,6 @@
 package lesson24.touragency.country.dto;
 
+import lesson24.touragency.city.dto.CityDtoConverter;
 import lesson24.touragency.country.domain.Country;
 import org.apache.commons.collections4.CollectionUtils;
 

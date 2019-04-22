@@ -1,5 +1,7 @@
 package lesson22.touragency.common.business.database.datasource;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import lesson22.touragency.common.business.exception.ConnectionAchiveError;
 
 import java.sql.Connection;

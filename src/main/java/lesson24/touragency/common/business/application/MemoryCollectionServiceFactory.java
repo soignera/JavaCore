@@ -10,7 +10,7 @@ import lesson24.touragency.country.service.CountryDefaultService;
 import lesson24.touragency.country.service.CountryService;
 import lesson24.touragency.order.repo.OrderCollectionRepo;
 import lesson24.touragency.order.repo.OrderRepo;
-import lesson24.touragency.order.service.OrderDefaultService;
+import lesson24.touragency.order.service.OrderMemoryService;
 import lesson24.touragency.order.service.OrderService;
 import lesson24.touragency.user.repo.UserCollectionRepo;
 import lesson24.touragency.user.repo.UserRepo;
@@ -24,9 +24,9 @@ public class MemoryCollectionServiceFactory implements ServiceFactory {
     private UserRepo userRepo = new UserCollectionRepo();
 
     private CityService cityService = new CityDefaultService(cityRepo, orderRepo);
-    private OrderService orderService = new OrderDefaultService(orderRepo);
+    private OrderService orderService = new OrderMemoryService(orderRepo, countryRepo, cityRepo, userRepo);
     private UserService userService = new UserDefaultService(userRepo, orderService);
-    private CountryService countryService = new CountryDefaultService(countryRepo, cityRepo, cityService, orderRepo);
+    private CountryService countryService = new CountryDefaultService(countryRepo, cityService, orderRepo);
 
     @Override
     public CountryService getCountryService() {

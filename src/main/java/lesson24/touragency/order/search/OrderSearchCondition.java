@@ -21,7 +21,7 @@ public class OrderSearchCondition extends BaseSearchCondition<Long> {
         return countryId;
     }
 
-    public void setCountryId(Long markId) {
+    public void setCountryId(Long countryId) {
         this.countryId = countryId;
     }
     public boolean searchByCountryId() {

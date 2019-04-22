@@ -2,7 +2,6 @@ package lesson24.touragency.country.service;//package lesson10v2.touragency.coun
 
 
 import lesson24.touragency.city.domain.City;
-import lesson24.touragency.city.repo.CityRepo;
 import lesson24.touragency.city.service.CityService;
 import lesson24.touragency.common.business.exception.UncheckedException;
 import lesson24.touragency.country.domain.Country;
@@ -19,13 +18,11 @@ import static lesson24.touragency.country.exception.CountryExceptionMeta.DELETE_
 
 public class CountryDefaultService implements CountryService {
     private final CountryRepo countryRepo;
-    private final CityRepo cityRepo;
     private final CityService cityService;
     private final OrderRepo orderRepo;
 
-    public CountryDefaultService(CountryRepo countryRepo, CityRepo cityRepo, CityService cityService, OrderRepo orderRepo) {
+    public CountryDefaultService(CountryRepo countryRepo, CityService cityService, OrderRepo orderRepo) {
         this.countryRepo = countryRepo;
-        this.cityRepo = cityRepo;
         this.cityService = cityService;
         this.orderRepo = orderRepo;
     }
@@ -54,7 +51,7 @@ public class CountryDefaultService implements CountryService {
             if (country.getCities() != null) {
                 for (City city : country.getCities()) {
                     if (city != null) {
-                        cityRepo.add(city);
+                        cityService.add(city);
                     }
                 }
             }

@@ -111,9 +111,9 @@ public void add(Collection<City> cities) {
         return cityRepo.countAll();
     }
     @Override
-    public List<City> getCitiesByCountryId(Long markId) {
-        if (markId != null) {
-            return cityRepo.getCitiesByCountryId(markId);
+    public List<City> getCitiesByCountryId(Long countryId) {
+        if (countryId != null) {
+            return cityRepo.getCitiesByCountryId(countryId);
         }
         return Collections.emptyList();
     }

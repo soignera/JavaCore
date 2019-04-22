@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface CityService extends BaseService<City, Long> {
     List<? extends City> search(CitySearchCondition searchCondition);
-    List<City> getCitiesByCountryId(Long markId);
+    List<City> getCitiesByCountryId(Long countryId);
 }

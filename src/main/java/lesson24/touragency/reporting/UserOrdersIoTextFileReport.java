@@ -1,14 +1,13 @@
 package lesson24.touragency.reporting;
 
+import lesson24.touragency.city.domain.City;
 import lesson24.touragency.city.service.CityService;
+import lesson24.touragency.country.domain.Country;
 import lesson24.touragency.country.service.CountryService;
 import lesson24.touragency.order.domain.Order;
 import lesson24.touragency.order.service.OrderService;
-import lesson24.touragency.reporting.ReportComponent;
 import lesson24.touragency.user.domain.User;
 import lesson24.touragency.user.service.UserService;
-import lesson24.touragency.city.domain.City;
-import lesson24.touragency.country.domain.Country;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -96,14 +95,14 @@ public class UserOrdersIoTextFileReport implements ReportComponent {
 
     private String orderToReportLine(Order order) {
         StringBuilder orderAsStr = new StringBuilder();
-        Optional<Country> country = countryService.findById(order.getCountryId());
-        Optional<City> city = cityService.findById(order.getCityId());
-        if (country.isPresent() && city.isPresent()) {
-        orderAsStr.append("Order: ")
-                .append("Country: ").append(order.getCountry().getName()).append(";")
-                .append(" City: ").append(order.getCity().getName()).append(";")
-                .append(" Price: ").append(order.getPrice());
+        Optional<Country> country = countryService.findById(order.getCountry().getId());
+        Optional<City> city = cityService.findById(order.getCity().getId());
 
+        if (country.isPresent() && city.isPresent()) {
+            orderAsStr.append("Order: ")
+                    .append("Country: ").append(country.get().getName()).append(";")
+                    .append(" City: ").append(city.get().getName()).append(";")
+                    .append(" Price: ").append(order.getPrice());
         }else{
             throw new RuntimeException("Could fetch record by id");
         }

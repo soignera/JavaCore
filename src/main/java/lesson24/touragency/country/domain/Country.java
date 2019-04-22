@@ -15,6 +15,9 @@ public class Country extends BaseDomain<Long> {
 
     public Country() {
     }
+    public Country(Long id) {
+        this.id = id;
+    }
 
     public Country(String name, String languag) {
         this.name = name;

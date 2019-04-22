@@ -1,7 +1,7 @@
-<%@ page import="ru.yusdm.javacore.lesson24web.autoservice.order.domain.Order" %>
+<%@ page import="javacore.lesson24.touragency.order.domain.Order" %>
 <%@ page import="java.util.List" %>
-<%@ page import="ru.yusdm.javacore.lesson24web.autoservice.order.dto.OrderDto" %>
-<%@ page import="ru.yusdm.javacore.lesson24web.autoservice.user.dto.UserDto" %>
+<%@ page import="javacore.lesson24.touragency.order.dto.OrderDto" %>
+<%@ page import="javacore.lesson24.touragency.user.dto.UserDto" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>

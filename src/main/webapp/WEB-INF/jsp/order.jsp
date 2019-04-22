@@ -1,6 +1,6 @@
-<%@ page import="ru.yusdm.javacore.lesson24web.autoservice.order.domain.Order" %>
+<%@ page import="javacore.lesson24.touragency.order.domain.Order" %>
 <%@ page import="java.util.List" %>
-<%@ page import="ru.yusdm.javacore.lesson24web.autoservice.order.dto.OrderDto" %>
+<%@ page import="javacore.lesson24.touragency.order.dto.OrderDto" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -29,24 +29,24 @@
                 <thead>
                 <th>Информация о заказе</th>
                 <th>Клиент</th>
-                <th>Марка</th>
-                <th>Модель</th>
+                <th>Страна</th>
+                <th>Город</th>
                 </thead>
                 <tbody>
                 <tr>
                     <td>
                         <div><b>Цена </b><%=order.getPrice()%></div>
-                        <div><b>Поломка </b><%=order.getDescription()%></div>
+                        <div><b>Путевка </b><%=order.getDescription()%></div>
                     </td>
                     <td>
                         <div><b>Фамилия </b><%=order.getUser().getLastName()%></div>
                         <div><b>Имя </b><%=order.getUser().getFirstName()%></div>
                     </td>
                     <td>
-                        <div><b>Марка </b><%= order.getMark().getName()%></div>
+                        <div><b>Страна </b><%= order.getCountry().getName()%></div>
                     </td>
                     <td>
-                        <div><b>Марка </b><%= order.getModel().getName()%></div>
+                        <div><b>Марка </b><%= order.getCity().getName()%></div>
                     </td>
                 </tr>
                 </tbody>

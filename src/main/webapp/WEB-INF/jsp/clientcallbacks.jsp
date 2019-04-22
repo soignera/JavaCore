@@ -1,6 +1,6 @@
-<%@ page import="ru.yusdm.javacore.lesson24web.autoservice.order.domain.Order" %>
+<%@ page import="javacore.lesson24.touragency.order.domain.Order" %>
 <%@ page import="java.util.List" %>
-<%@ page import="ru.yusdm.javacore.lesson24web.autoservice.order.dto.OrderDto" %>
+<%@ page import="javacore.lesson24.touragency.order.dto.OrderDto" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -33,8 +33,8 @@
                     <td valign="top">
                         <img src="<%=request.getContextPath()%>/resources/images/clientcallback/gray.jpg" width="210">
                         <br>
-                        Механики которые работают этом сервисе просто чудо! Видно, что они очень опытные мастера.
-                        Качественно сделали мой автомобиль. Я счастлива, буду всем советовать! Если что, то снова сюда.
+                        Турагенты просто чудо! Видно, что они очень опытные мастера.
+                        Качественно сделали путевку. Я счастлива, буду всем советовать! Если что, то снова сюда.
                         Огромное спасибо!
                     </td>
                     <td valign="top">

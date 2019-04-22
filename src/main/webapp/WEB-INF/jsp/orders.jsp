@@ -1,4 +1,4 @@
-<%@ page import="ru.yusdm.javacore.lesson24web.autoservice.order.dto.OrderDto" %>
+<%@ page import="javacore.lesson24.touragency.order.dto.OrderDto" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -28,10 +28,10 @@
             <table width="100%" style="border-collapse: collapse; border: 1px solid gray" border="1" cellpadding="5px">
                 <thead>
                 <th>Клиент</th>
-                <th>Марка</th>
-                <th>Модель</th>
-                <th>Поломка</th>
-                <th>Стоимость ремонта</th>
+                <th>Страна</th>
+                <th>Город</th>
+                <th>Путевка</th>
+                <th>Стоимость</th>
                 <th>Действия</th>
                 </thead>
                 <tbody>
@@ -44,10 +44,10 @@
                         <%= order.getUser().getFirstName() + " " + order.getUser().getLastName()%>
                     </td>
                     <td>
-                        <%= order.getMark().getName()%>
+                        <%= order.getCountry().getName()%>
                     </td>
                     <td>
-                        <%= order.getModel().getName()%>
+                        <%= order.getCity().getName()%>
                     </td>
                     <td>
                         <%= order.getDescription()%>

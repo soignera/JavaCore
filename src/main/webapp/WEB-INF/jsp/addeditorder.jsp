@@ -1,7 +1,7 @@
-<%@ page import="ru.yusdm.javacore.lesson24web.autoservice.mark.dto.MarkDto" %>
-<%@ page import="ru.yusdm.javacore.lesson24web.autoservice.user.dto.UserDto" %>
+<%@ page import="javacore.lesson24.touragency.country.dto.CountryDto" %>
+<%@ page import="javacore.lesson24.touragency.country.user.dto.UserDto" %>
 <%@ page import="java.util.List" %>
-<%@ page import="ru.yusdm.javacore.lesson24web.autoservice.order.domain.Order" %>
+<%@ page import="javacore.lesson24.touragency.country.order.domain.Order" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -58,22 +58,22 @@
                     </tr>
 
                     <tr>
-                        <td>Марка</td>
+                        <td>Страна</td>
                         <td>
-                            <select name="markId" id="markCombo">
+                            <select name="countryId" id="countryCombo">
                                 <option value=""></option>
                                 <%
-                                    if (request.getAttribute("marks") != null) {
-                                        List<MarkDto> marks = (List<MarkDto>) request.getAttribute("marks");
-                                        for (MarkDto mark : marks) {
+                                    if (request.getAttribute("countries") != null) {
+                                        List<CountryDto> countries = (List<CountryDto>) request.getAttribute("countries");
+                                        for (CountryDto country : countries) {
 
                                             String selected = "";
-                                            if (editedOrder != null && mark.getId().equals(editedOrder.getMark().getId())) {
+                                            if (editedOrder != null && mark.getId().equals(editedOrder.getCountry().getId())) {
                                                 selected = "selected=\"selected\"";
                                             }
 
                                 %>
-                                <option value="<%=mark.getId()%>" <%=selected%>><%=mark.getName()%>
+                                <option value="<%=country.getId()%>" <%=selected%>><%=country.getName()%>
                                 </option>
                                 <%
                                         }
@@ -84,12 +84,12 @@
                     </tr>
 
                     <tr>
-                        <td>Модель:</td>
-                        <td><select name="modelId" id="modelCombo"></select></td>
+                        <td>Город:</td>
+                        <td><select name="cityId" id="cityCombo"></select></td>
                     </tr>
 
                     <tr>
-                        <td>Поломка:</td>
+                        <td>Путевка:</td>
                         <td><input type="text" name="description"
                                    value="<%=editedOrder!=null ? editedOrder.getDescription():""%>"/></td>
                     </tr>
@@ -128,24 +128,24 @@
 
 <script type="text/javascript">
 
-    function getModelsForSelectedMark(markId) {
+    function getCitiesForSelectedCountry(countryId) {
         $.ajax({
-            url: "<%=request.getContextPath() + "/getmodels?markId="%>" + markId
+            url: "<%=request.getContextPath() + "/getcities?countryId="%>" + countryId
         }).done(
             function (data) {
 
-                var modelCombo = $('#modelCombo');
-                $(modelCombo).empty();
-                $(modelCombo).append('<option value="" selected="selected"></option>');
+                var cityCombo = $('#cityCombo');
+                $(cityCombo).empty();
+                $(cityCombo).append('<option value="" selected="selected"></option>');
 
-                data.split(";").forEach(function (modelIdNamePairStr) {
-                    var splitted = modelIdNamePairStr.split(":");
-                    $(modelCombo).append('<option value="' + splitted[0] + '">' + splitted[1] + '</option>');
+                data.split(";").forEach(function (cityIdNamePairStr) {
+                    var splitted = cityIdNamePairStr.split(":");
+                    $(cityCombo).append('<option value="' + splitted[0] + '">' + splitted[1] + '</option>');
 
                     <%
                     if (editedOrder!=null){
                     %>
-                    $("#modelCombo").val("<%=editedOrder.getModel().getId()%>");
+                    $("#cityCombo").val("<%=editedOrder.getCity().getId()%>");
                     <%
                     }
                     %>
@@ -153,8 +153,8 @@
             });
     }
 
-    $('#markCombo').on('change', function () {
-        getModelsForSelectedMark(this.value)
+    $('#countryCombo').on('change', function () {
+        getCitiesForSelectedCountry(this.value)
     });
 
 
@@ -162,7 +162,7 @@
         if (editedOrder != null) {
     %>
     $(document).ready(function () {
-        getModelsForSelectedMark('<%=editedOrder.getMark().getId()%>');
+        getCitiesForSelectedCountry('<%=editedOrder.getCountry().getId()%>');
     });
     <%
         }

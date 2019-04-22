@@ -1,14 +1,14 @@
-<%@ page import="ru.yusdm.javacore.lesson24web.autoservice.common.business.application.StorageType" %><%--
+<%@ page import="javacore.lesson24.touragency.common.business.application.StorageType" %><%--
   Created by IntelliJ IDEA.
-  User: Dmitry
-  Date: 13.04.2019
+  User: Soignera
+  Date: 23.04.2019
   Time: 16:48
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>AutoService</title>
+    <title>TourAgency</title>
 </head>
 <body style="padding-top: 150px">
 

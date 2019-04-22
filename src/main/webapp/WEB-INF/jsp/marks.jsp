@@ -1,4 +1,4 @@
-<%@ page import="ru.yusdm.javacore.lesson24web.autoservice.mark.dto.MarkDto" %>
+<%@ page import="javacore.lesson24.touragency.mark.dto.MarkDto" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -21,27 +21,27 @@
 
         <td width="70%" valign="top" style="height: 60%">
             <%
-                if (request.getAttribute("marks") != null) {
-                    List<MarkDto> marks = (List<MarkDto>) request.getAttribute("marks");
+                if (request.getAttribute("countries") != null) {
+                    List<CountryDto> countries = (List<CountryDto>) request.getAttribute("countries");
             %>
             <table width="100%" style="border-collapse: collapse; border: 1px solid gray" border="1" cellpadding="5px">
                 <thead>
-                <th>Марка</th>
-                <th>Модели</th>
+                <th>Страна</th>
+                <th>Города</th>
                 </thead>
                 <tbody>
                 <%
-                    for (MarkDto mark : marks) {
+                    for (CountryDto country : countries) {
 
                 %>
                 <tr>
                     <td>
                         <div><b>Название</b> <%= mark.getName()%></div>
-                        <div><b>Страна</b> <%= mark.getCountry()%></div>
+                        <div><b>Язык</b> <%= mark.getLanguag()%></div>
                     </td>
                     <td>
-                        <%request.setAttribute("models", mark.getModels());%>
-                        <jsp:include page="models.jsp"/>
+                        <%request.setAttribute("cities", country.getCities());%>
+                        <jsp:include page="cities.jsp"/>
                     </td>
                 </tr>
                 <%} %>
